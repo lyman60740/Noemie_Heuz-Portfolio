@@ -8,8 +8,8 @@ $blue : #84A3D2;
 
 //TODO Sotcker les tailles de font dans des variable pour préparer le responsive
 
-$text : 1.55vw;
-$h1 : 6.73vw;
+$text : 1.25vw;
+$h1 : 6.46vw;
 $h2: 3.63vw;
 
 body {
@@ -69,19 +69,20 @@ main {
 .container {
     
     height: 100%;
-    padding: 0 $h1;
+    padding: 0 10.74vw;
 }
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height:  7.837vh;
+    width: 100%;
     
     & nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 53.16vw;
+        width: 64.02%;
         & a {
            
             &::after{
@@ -139,7 +140,7 @@ article {
     margin-right: 52px;
 }
 .landing {
-    width: 53.16vw;
+    width: 64.02%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -245,6 +246,8 @@ article {
 .contactButton {
     &_bg {
         background-image: url(./assets/lettrage.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
         animation: infiniteRotate 10000ms infinite linear;
         width: 102%;
         aspect-ratio: 1;
@@ -280,7 +283,7 @@ article {
     justify-content: center;
     }
     &_circleWhite {
-        width: 120px;
+        width: 7.79vw;
         aspect-ratio: 1;
         background: $white;
         border-radius: 50%;
