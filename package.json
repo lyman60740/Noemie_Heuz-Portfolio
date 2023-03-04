@@ -1,0 +1,14 @@
+{
+  "name": "noemie_portfolio",
+  "version": "1.0.0",
+  "description": "Noemie portfolio",
+  "main": "script.js",
+  "scripts": {
+    "sass": "sass --watch ./style.scss:./style.css"
+  },
+  "author": "lyman",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.149.0"
+  }
+}
