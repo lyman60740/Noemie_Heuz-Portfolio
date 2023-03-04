@@ -10,10 +10,7 @@ $blue : #84A3D2;
 
 $text : 1.55vw;
 $h1 : 6.73vw;
-$h2: 3.64vw;
- 
-
-
+$h2: 3.63vw;
 
 body {
     margin: 0;
@@ -51,6 +48,7 @@ h2 {
 
 h3 {
     font-weight: 400;
+    font-size: $text;
 }
 
 a {
@@ -71,7 +69,7 @@ main {
 .container {
     
     height: 100%;
-    padding: 2.44vh $h1;
+    padding: 0 $h1;
 }
 header {
     display: flex;
@@ -175,12 +173,11 @@ article {
     
     &_largeCircle {
         transform: translateX(-60px);
-        height: 130px;
         color: initial;
         border-style: solid;
         border-width: 2px;
         border-radius: 50%;
-        width: 130px;
+        width: 7.79vw;
         aspect-ratio: 1;
         display: flex;
         align-items: center;
@@ -189,7 +186,7 @@ article {
     }
 
     border-radius: 50%;
-    width: 120px;
+    width: 7.79vw;
     aspect-ratio: 1;
     border:1px solid white;
     background: $black;
@@ -201,7 +198,7 @@ article {
     font-family: 'Syne', sans-serif;
     color: $white;
     &_circleWhite {
-        width: 120px;
+        width: 7.13vw;
         aspect-ratio: 1;
         background: $white;
         border-radius: 50%;
@@ -249,7 +246,7 @@ article {
     &_bg {
         background-image: url(./assets/lettrage.svg);
         animation: infiniteRotate 10000ms infinite linear;
-        width: 100%;
+        width: 102%;
         aspect-ratio: 1;
         background-position: center;
         display: flex;
