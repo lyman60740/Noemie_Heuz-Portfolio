@@ -203,58 +203,58 @@ $('.contactButton_blue').on('mouseenter', function(){
   var projets = [
     {
       categorie: 'uxui',
-      titre: 'Projet',
+      titre: 'Landing page',
       numero: 1,
-      type: 'Type de projet',
+      type: 'Site web',
       image: './assets/imagesTest/jerem.jpg'
     },
     {
       categorie: 'uxui',
-      titre: 'Projet',
+      titre: 'Calculatrice',
       numero: 2,
-      type: 'Type de projet',
+      type: 'Application mobile',
       image: './assets/imagesTest/jupiter.png'
     },
     {
       categorie: 'uxui',
-      titre: 'Projet',
+      titre: 'Page de connexion',
       numero: 3,
-      type: 'Type de projet',
+      type: 'Application mobile',
       image: './assets/imagesTest/future.png'
     },
     {
       categorie: 'uxui',
-      titre: 'Projet',
+      titre: 'Page de paiement',
       numero: 1,
-      type: 'Type de projet',
+      type: 'Application mobile',
       image: './assets/imagesTest/graphiste.png'
     },
     {
       categorie: 'uxui',
-      titre: 'Projet',
+      titre: 'Projet - 5',
       numero: 2,
       type: 'Type de projet',
       image: './assets/imagesTest/logocomp.png'
     },
     {
       categorie: '3d',
-      titre: 'Projet',
+      titre: 'Le cube',
       numero: 3,
-      type: 'Type de projet',
+      type: 'Illustration 3D',
+      image: 'chemin/vers/imageC.png'
+    },
+    {
+      categorie: 'illustration',
+      titre: 'Le baiser',
+      numero: 3,
+      type: 'Illustration',
       image: 'chemin/vers/imageC.png'
     },
     {
       categorie: 'illustration',
       titre: 'Projet',
       numero: 3,
-      type: 'Type de projet',
-      image: 'chemin/vers/imageC.png'
-    },
-    {
-      categorie: 'illustration',
-      titre: 'Projet',
-      numero: 3,
-      type: 'Type de projet',
+      type: 'Illustration',
       image: 'chemin/vers/imageC.png'
     },
     // Pour ajouter un nouveau projet copiez le code ci dessous
@@ -300,7 +300,7 @@ moveImage();
 for(let i = 0; i < projets.length; i++){
   $('.project_bloc_right').append(`
     <div class="project_bloc_right_line">
-      <h2>${projets[i].titre} - ${projets[i].numero}</h2>
+      <h2>${projets[i].titre}</h2>
       <span>${projets[i].type}</span>
       <div></div>
     </div>
