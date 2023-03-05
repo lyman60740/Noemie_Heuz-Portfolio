@@ -15,8 +15,11 @@ $blue : #84A3D2;
 
 $text : 1.25vw;
 $h1 : 6.46vw;
-$h2: 3.63vw;
- 
+$h2: 56px;
+html {
+    scroll-behavior: smooth;
+  }
+  
 body {
     margin: 0;
     font-family: 'Syne', sans-serif;
@@ -25,6 +28,7 @@ body {
     font-weight: 400;
     color: $white;
     // cursor: none;
+    
 }
 ::-webkit-scrollbar {
     width: 0;
@@ -229,7 +233,7 @@ article {
         
         & div {
             width: 32px;
-            height: 33px;
+            height: 25px;
             background: $white;
             border-top: 4px solid $black;
             z-index: 2;
@@ -331,6 +335,9 @@ article {
                 background-size: cover;
                 background-repeat: no-repeat;
             }
+            &_text p:nth-child(1){
+                margin-top: 56px;
+            }
         }
     }
 }
@@ -356,6 +363,7 @@ article {
                 
                 & h3 {
                     font-weight: 400;
+                    transition: all 300ms ease-in-out;
                 }
                 font-weight: 400;
                 & div {
@@ -363,6 +371,9 @@ article {
                     width: 24px;
                     background: $white;
                     margin-right: 56px;
+                    transition: all 300ms ease-in-out;
+                    transform-origin: left;
+                    
                 }
             }
             
@@ -389,6 +400,12 @@ article {
                         background: $blue;
                     }
                     
+                }
+                &:nth-child(5){
+                    margin-bottom: 80px;
+                }
+                &:nth-child(6){
+                    margin-bottom: 80px;
                 }
                 
                 & h2 {
@@ -420,6 +437,8 @@ article {
 }
 .blue {
     color: $blue;
+    
+    transform: scale(1.1);
 }
 .contact {
     &_bloc {

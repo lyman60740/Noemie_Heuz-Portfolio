@@ -21,15 +21,15 @@ $( document ).ready(function(){
 })
 var cvButtonAnimations = []; // créer un tableau pour stocker les animations
 
-cvButton.on('mouseenter', function(){
+cvButton.on('mouseenter', function(e){
   // Mettre en pause toutes les animations en cours
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
   }
-
+//TODO trouver comment animer seulement le bouton ciblé 
   // Animer .cvButton_circleWhite
   var animation1 = anime({
-    targets: '.cvButton_circleWhite',
+    targets: '.cvButton_circleWhite', 
     scale: 1,
     easing: 'easeOutElastic(1, .9)',
     duration: 700
@@ -38,7 +38,7 @@ cvButton.on('mouseenter', function(){
 
   // Animer .arrowCv et .cvButton_arrowBox div
   var animation2 = anime({
-    targets: '.arrowCv, .cvButton_arrowBox div',
+    targets:'.arrowCv, .cvButton_arrowBox div',
     opacity: 1,
     delay: 200,
     easing: 'easeInOutSine',
@@ -48,7 +48,7 @@ cvButton.on('mouseenter', function(){
 
   // Animer .cvButton span
   var animation3 = anime({
-    targets: '.cvButton span',
+    targets: '.cvButton span', 
     opacity: 0,
     easing: 'easeInOutSine',
     duration: 500
@@ -56,7 +56,7 @@ cvButton.on('mouseenter', function(){
   cvButtonAnimations.push(animation3);
 });
 
-cvButton.on('mouseleave', function(){
+cvButton.on('mouseleave', function(e){
   // Mettre en pause toutes les animations en cours
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
@@ -64,7 +64,7 @@ cvButton.on('mouseleave', function(){
 
   // Réinitialiser .cvButton_circleWhite
   anime({
-    targets: '.cvButton_circleWhite',
+    targets:'.cvButton_circleWhite', 
     scale: 0,
     easing: 'easeInOutSine',
     duration: 500
@@ -78,7 +78,7 @@ cvButton.on('mouseleave', function(){
 
   // Réinitialiser .arrowCv et .cvButton_arrowBox div
   anime({
-    targets: '.arrowCv, .cvButton_arrowBox div',
+    targets:'.arrowCv, .cvButton_arrowBox div', 
     duration: 1,
     opacity: 0,
     easing: 'easeInOutSine'
@@ -86,7 +86,7 @@ cvButton.on('mouseleave', function(){
 
   // Réinitialiser .cvButton span
   anime({
-    targets: '.cvButton span',
+    targets:'.cvButton span', 
     opacity: 1,
     easing: 'easeInOutSine',
     duration: 500,
@@ -100,7 +100,7 @@ cvButton.on('mouseleave', function(){
     
   });
   anime({
-    targets: '.validate',
+    targets:  '.validate',
     translateY: 0,
     easing: 'easeInOutSine' ,
     duration: 100,
@@ -112,6 +112,7 @@ cvButton.on('mouseleave', function(){
     easing: 'easeInOutSine' ,
     duration : 300,
   });
+//TODO regarder pq le this marche pas
 
 
 
@@ -241,21 +242,21 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Le cube',
       numero: 3,
       type: 'Illustration 3D',
-      image: 'chemin/vers/imageC.png'
+      image: './assets/imagesTest/graphiste.png'
     },
     {
       categorie: 'illustration',
       titre: 'Le baiser',
       numero: 3,
       type: 'Illustration',
-      image: 'chemin/vers/imageC.png'
+      image: './assets/imagesTest/graphiste.png'
     },
     {
       categorie: 'illustration',
       titre: 'Projet',
       numero: 3,
       type: 'Illustration',
-      image: 'chemin/vers/imageC.png'
+      image: './assets/imagesTest/graphiste.png'
     },
     // Pour ajouter un nouveau projet copiez le code ci dessous
     // ecrit en vert et collez le juste aprés la virgule du dernier projet
@@ -319,12 +320,25 @@ for(let i = 0; i < projets.length; i++){
     // Vérifier si la catégorie est "uxui" et ajouter la classe blue en conséquence
     if (projets[i].categorie === 'uxui') {
       $('.uxuiCategorie').addClass('blue');
+      $('.uxuiCategorie').prev().css({
+        'transform': 'scaleX(1.2)',
+        'background': '#84A3D2'
+      })
     }
     if (projets[i].categorie === '3d') {
       $('.3dCategorie').addClass('blue');
+      $('.3dCategorie').prev().css({
+        'transform': 'scaleX(1.2)',
+        'background': '#84A3D2'
+      })
     }
     if (projets[i].categorie === 'illustration') {
       $('.illustrationCategorie').addClass('blue');
+      $('.illustrationCategorie').prev().css({
+        'transform': 'scaleX(1.2)',
+        'background': '#84A3D2'
+      })
+      
     }
   });
 
@@ -334,32 +348,30 @@ for(let i = 0; i < projets.length; i++){
     // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
     if (projets[i].categorie === 'uxui') {
       $('.uxuiCategorie').removeClass('blue');
+      $('.uxuiCategorie').prev().css({
+        'transform': 'scaleX(1)',
+        'background': '#F1EFE3'
+      })
     }
     if (projets[i].categorie === '3d') {
       $('.3dCategorie').removeClass('blue');
+      $('.3dCategorie').prev().css({
+        'transform': 'scaleX(1)',
+        'background': '#F1EFE3'
+      })
     }
     if (projets[i].categorie === 'illustration') {
       $('.illustrationCategorie').removeClass('blue');
+      $('.illustrationCategorie').prev().css({
+        'transform': 'scaleX(1)',
+        'background': '#F1EFE3'
+      })
     }
   });
   
 }
 
-// $(window).on('scroll', function() {
-//   var scrollPos = $(window).scrollTop();
-//   var blocPos = $('.project_bloc').offset().top;
-//   var blocHeight = $('.project_bloc').outerHeight();
-//   var windowHeight = $(window).height();
-//   var newTranslateY = '0';
-  
-//   if (scrollPos > blocPos && scrollPos < (blocPos + blocHeight - windowHeight)) {
-//     newTranslateY = ((windowHeight - $('.project_bloc_left').outerHeight()) / 2) + 'px';
-//   } else if (scrollPos >= (blocPos + blocHeight - windowHeight)) {
-//     newTranslateY = (blocHeight - $('.project_bloc_left').outerHeight()) + 'px';
-//   }
 
-//   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
-// });
 $(window).on('scroll', function() {
   var scrollPos = $(window).scrollTop();
   var blocPos = $('.project_bloc').offset().top;
