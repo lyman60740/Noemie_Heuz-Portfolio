@@ -6,12 +6,17 @@ $lightWhite : rgba(241, 239, 227, 0.5);
 $blueGradient : linear-gradient(to bottom, #84A3D2, #EDEEE0);
 $blue : #84A3D2;
 
-//TODO Sotcker les tailles de font dans des variable pour préparer le responsive
+//TODO Faire des breakpoint sur des paliers notamment pour les fonts
+//TODO Maj des titres des projets 
+//TODO Maj des images projets 
+//TODO Liens reseaux en dessous du send corriger le sous lignage en transition color
+//TODO revoir les marges entres les projets
+//TODO corriger le bug dans boutton CV
 
 $text : 1.25vw;
 $h1 : 6.46vw;
 $h2: 3.63vw;
-
+ 
 body {
     margin: 0;
     font-family: 'Syne', sans-serif;
@@ -178,7 +183,7 @@ article {
         border-style: solid;
         border-width: 2px;
         border-radius: 50%;
-        width: 7.79vw;
+        width: 104px;
         aspect-ratio: 1;
         display: flex;
         align-items: center;
@@ -187,7 +192,7 @@ article {
     }
 
     border-radius: 50%;
-    width: 7.79vw;
+    width: 130px;
     aspect-ratio: 1;
     border:1px solid white;
     background: $black;
@@ -199,7 +204,7 @@ article {
     font-family: 'Syne', sans-serif;
     color: $white;
     &_circleWhite {
-        width: 7.13vw;
+        width: 104px;
         aspect-ratio: 1;
         background: $white;
         border-radius: 50%;
@@ -257,7 +262,7 @@ article {
         justify-content: center;
     }
     background: black;
-    width: 14.79vw;
+    width: 230px;
     aspect-ratio: 1;
     border-radius: 50%;
     &_largeCircle {
@@ -266,7 +271,7 @@ article {
         border-style: solid;
         border-width: 2px;
         border-radius: 50%;
-        width: 8.39vw;
+        width: 110px;
         aspect-ratio: 1;
         display: flex;
         align-items: center;
@@ -274,7 +279,7 @@ article {
     }
     &_blue {
         border-radius: 50%;
-    width: 7.79vw;
+    width: 104px;
     aspect-ratio: 1;
     
     background: $blue;
@@ -283,7 +288,7 @@ article {
     justify-content: center;
     }
     &_circleWhite {
-        width: 7.79vw;
+        width: 130px;
         aspect-ratio: 1;
         background: $white;
         border-radius: 50%;
@@ -649,3 +654,11 @@ footer {
     
 //   }
   
+
+// Responsive
+
+@media  (max-width: 1400px) {
+   body, h3, .cvButton, .project_bloc_right span, .contact_bloc_right form input, .contact_bloc_right form input::placeholder, .contact_bloc_right form button, textarea, .link_home h3, .link_home a, .link_contact {
+    font-size: 18px;
+   }
+  }
