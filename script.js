@@ -202,36 +202,56 @@ $('.contactButton_blue').on('mouseenter', function(){
 
   var projets = [
     {
+      categorie: 'uxui',
       titre: 'Projet',
       numero: 1,
       type: 'Type de projet',
       image: './assets/imagesTest/jerem.jpg'
     },
     {
+      categorie: 'uxui',
       titre: 'Projet',
       numero: 2,
       type: 'Type de projet',
       image: './assets/imagesTest/jupiter.png'
     },
     {
+      categorie: 'uxui',
       titre: 'Projet',
       numero: 3,
       type: 'Type de projet',
       image: './assets/imagesTest/future.png'
     },
     {
+      categorie: 'uxui',
       titre: 'Projet',
       numero: 1,
       type: 'Type de projet',
       image: './assets/imagesTest/graphiste.png'
     },
     {
+      categorie: 'uxui',
       titre: 'Projet',
       numero: 2,
       type: 'Type de projet',
       image: './assets/imagesTest/logocomp.png'
     },
     {
+      categorie: '3d',
+      titre: 'Projet',
+      numero: 3,
+      type: 'Type de projet',
+      image: 'chemin/vers/imageC.png'
+    },
+    {
+      categorie: 'illustration',
+      titre: 'Projet',
+      numero: 3,
+      type: 'Type de projet',
+      image: 'chemin/vers/imageC.png'
+    },
+    {
+      categorie: 'illustration',
       titre: 'Projet',
       numero: 3,
       type: 'Type de projet',
@@ -295,12 +315,85 @@ for(let i = 0; i < projets.length; i++){
       opacity: 1,
       delay: 100,
     });
+
+    // Vérifier si la catégorie est "uxui" et ajouter la classe blue en conséquence
+    if (projets[i].categorie === 'uxui') {
+      $('.uxuiCategorie').addClass('blue');
+    }
+    if (projets[i].categorie === '3d') {
+      $('.3dCategorie').addClass('blue');
+    }
+    if (projets[i].categorie === 'illustration') {
+      $('.illustrationCategorie').addClass('blue');
+    }
   });
 
-  $('.project_bloc_right_line').eq(i).on('mouseleave', function(){
+  $('.project_bloc_right_line').on('mouseleave', function(){
     $(this).find('.project_bloc_right_line_img').remove();
+    
+    // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
+    if (projets[i].categorie === 'uxui') {
+      $('.uxuiCategorie').removeClass('blue');
+    }
+    if (projets[i].categorie === '3d') {
+      $('.3dCategorie').removeClass('blue');
+    }
+    if (projets[i].categorie === 'illustration') {
+      $('.illustrationCategorie').removeClass('blue');
+    }
   });
+  
 }
+
+// $(window).on('scroll', function() {
+//   var scrollPos = $(window).scrollTop();
+//   var blocPos = $('.project_bloc').offset().top;
+//   var blocHeight = $('.project_bloc').outerHeight();
+//   var windowHeight = $(window).height();
+//   var newTranslateY = '0';
+  
+//   if (scrollPos > blocPos && scrollPos < (blocPos + blocHeight - windowHeight)) {
+//     newTranslateY = ((windowHeight - $('.project_bloc_left').outerHeight()) / 2) + 'px';
+//   } else if (scrollPos >= (blocPos + blocHeight - windowHeight)) {
+//     newTranslateY = (blocHeight - $('.project_bloc_left').outerHeight()) + 'px';
+//   }
+
+//   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
+// });
+$(window).on('scroll', function() {
+  var scrollPos = $(window).scrollTop();
+  var blocPos = $('.project_bloc').offset().top;
+  var blocHeight = $('.project_bloc').outerHeight();
+  var windowHeight = $(window).height();
+  var centerPos = scrollPos + (windowHeight / 2);
+  var blocLeftHeight = $('.project_bloc_left').outerHeight();
+  var blocLeftOffset = $('.project_bloc_left').offset().top;
+  var centerOffset = centerPos - blocPos;
+  var newTranslateY = '0';
+
+  var blocRightPos = $('.project_bloc_right').offset().top;
+  var blocRightHeight = $('.project_bloc_right').outerHeight();
+  var topLimit = blocRightPos - blocLeftHeight / 2;
+  var bottomLimit = (blocRightPos + blocRightHeight - windowHeight + blocLeftHeight / 2)+150;
+
+  if (scrollPos >= topLimit && scrollPos <= bottomLimit) {
+    if (blocLeftHeight <= windowHeight) {
+      newTranslateY = (centerOffset - blocLeftHeight / 2) + 'px';
+    } else {
+      newTranslateY = ((windowHeight - blocLeftHeight) / 2) + 'px';
+    }
+  }
+
+  $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
+
+});
+
+
+
+
+
+
+
 
 
 

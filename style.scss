@@ -340,7 +340,8 @@ article {
         display: flex;
         justify-content: space-between;
         &_left {
-            
+            height: max-content;
+            transition: transform 500ms ease-in-out;
             &_point {
                 background: $white;
                 height: 2px;
@@ -383,9 +384,11 @@ article {
                 &:hover {
                     cursor:pointer;
                     color: $blue;
+                    
                     & div {
                         background: $blue;
                     }
+                    
                 }
                 
                 & h2 {
@@ -415,7 +418,9 @@ article {
         }
     }
 }
-
+.blue {
+    color: $blue;
+}
 .contact {
     &_bloc {
         display: flex;
