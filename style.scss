@@ -24,7 +24,7 @@ body {
     margin: 0;
     font-family: 'Syne', sans-serif;
     background: $black;
-    font-size: $text;
+    font-size: $text; 
     font-weight: 400;
     color: $white;
     // cursor: none;
@@ -34,7 +34,7 @@ body {
     width: 0;
     height: 0;
   }
-  ::-webkit-scrollbar-corner {
+  ::-webkit-scrollbar-corner { 
     background: transparent;
   }
 h1, h2,h3 {
@@ -385,6 +385,9 @@ article {
             width: 53.16vw;
             display: flex;
             flex-direction: column;
+            &_blocLine {
+                width: 100%;
+            }
             &_line {
                 
                 display: flex;

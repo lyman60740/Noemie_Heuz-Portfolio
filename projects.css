@@ -1,0 +1,79 @@
+@import "./style.css";
+
+.about h1 {
+    width: 100%;
+    margin-bottom: 104px;
+}
+.about_bloc {
+    width: 100%;
+    align-items: flex-end;
+}
+.about_bloc_content img {
+    width: 100%;
+}
+.about_bloc_content  {
+    margin-bottom: 144px;
+    width: 53.16vw;
+}
+h1 {
+    font-size: 5.46vw ;
+}
+.landing_mockup {
+    background-image: url(./assets/mockup_landing_page.png);
+}
+.project_description_bloc {
+    border-left: 1px solid #F1EFE3;
+    padding-left: 24px ;
+}
+.project_description_part {
+    margin: 0 0 56px 0;
+}
+.project_description_part p:nth-child(2) {
+    margin: 24px 0 0 0;
+}
+.project_description_part p:nth-child(1) {
+    font-weight: 600;
+}
+.project_presentation {
+    width: 100%;
+}
+.project_presentation img {
+    width: 100%;
+}
+.palette {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.palette div {
+    width: 10.5vw;
+    min-width: 100px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #F1EFE3;
+    margin-left: -20px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+.palette div :nth-child(1){
+    margin-left: 0;
+    
+}
+.project_bloc_right {
+    
+    align-items: flex-end;
+}
+#projets h2 {
+    font-weight: 700;
+    margin-bottom: 128px;
+}
+footer {
+    margin-top: 194px;
+}

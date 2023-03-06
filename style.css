@@ -358,6 +358,9 @@ article {
   display: flex;
   flex-direction: column;
 }
+.project_bloc_right_blocLine {
+  width: 100%;
+}
 .project_bloc_right_line {
   display: flex;
   flex-direction: column;
