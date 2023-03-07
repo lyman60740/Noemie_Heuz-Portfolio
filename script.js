@@ -299,12 +299,12 @@ function moveImage() {
 moveImage();
 
 for(let i = 0; i < projets.length; i++){
-  $('.project_bloc_right').append(`
-    <div class="project_bloc_right_line">
+  $('.project_bloc_right_blocLine').append(`
+    <a href="./projects.html" class="project_bloc_right_line">
       <h2>${projets[i].titre}</h2>
       <span>${projets[i].type}</span>
       <div></div>
-    </div>
+    </a>
   `);
 
   $('.project_bloc_right_line').eq(i).on('mouseenter', function(){
