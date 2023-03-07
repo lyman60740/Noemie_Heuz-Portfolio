@@ -80,7 +80,7 @@ header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 64.02%;
+  width: 53.16vw;
 }
 header nav a::after {
   content: "";
