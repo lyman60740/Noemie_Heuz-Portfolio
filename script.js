@@ -363,6 +363,7 @@ function moveImage() {
 
 moveImage();
 //TODO continuer d'implémenter la page projet dynamique via la tech url
+//TODO trouver pq l'import de variable fonctionne pas ( pour eviter d'avoir le tableau dupliqué)
 for(let i = 0; i < projets.length; i++){
   $('.project_bloc_right_blocLine').append(`
   <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line">
