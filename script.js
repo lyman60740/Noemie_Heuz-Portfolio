@@ -201,72 +201,137 @@ $('.contactButton_blue').on('mouseenter', function(){
 
   // Insertion data section projet 
 
-  var projets = [
+ var projets = [
     {
       categorie: 'uxui',
       titre: 'Landing page',
       numero: 1,
       type: 'Site web',
-      image: './assets/imagesTest/jerem.jpg'
+      image: './assets/imagesTest/jerem.jpg',
+      description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
+      outils: 'Figma, HTML, CSS',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#FFFFFF',
+        carac2: '#1B1B1E',
+        carac3: '#C9F0FF',
+        carac4: 'Roboto',
+        carac5: 'Visuels',
+      }
     },
     {
       categorie: 'uxui',
       titre: 'Calculatrice',
       numero: 2,
       type: 'Application mobile',
-      image: './assets/imagesTest/jupiter.png'
+      image: './assets/imagesTest/jupiter.png',
+      description: `Le projet consiste à concevoir l'UI-UX Design d'une application mobile de calculatrice personnalisable.`,
+      outils: 'Figma',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#E6E6F0',
+        carac2: '#000000',
+        carac3: 'Pink Gradient',
+        carac4: 'Purple Gradient',
+        carac5: 'Cyan Gradient',
+        carac6: 'Heebo',
+      }
     },
     {
       categorie: 'uxui',
       titre: 'Page de connexion',
       numero: 3,
       type: 'Application mobile',
-      image: './assets/imagesTest/future.png'
-    },
+      image: './assets/imagesTest/future.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une application de calculatrice personnalisable.`,
+      outils: 'Figma',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#000000',
+        carac2: '#EEEBDA',
+        carac3: '#F2AF9F',
+        carac4: '#EC7D69',
+        carac5: '#ABD0BF',
+        carac5: '#065143',
+        carac5: 'Syne Inter',
+        carac5: 'Visuels',
+      } },
     {
       categorie: 'uxui',
       titre: 'Page de paiement',
       numero: 1,
       type: 'Application mobile',
-      image: './assets/imagesTest/graphiste.png'
-    },
+      image: './assets/imagesTest/graphiste.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
+      outils: 'Figma, HTML, CSS',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#FFFFFF',
+        carac2: '#1B1B1E',
+        carac3: '#C9F0FF',
+        carac4: 'Roboto',
+        carac5: 'Visuels',
+      } },
     {
       categorie: 'uxui',
       titre: 'Projet - 5',
       numero: 2,
       type: 'Type de projet',
-      image: './assets/imagesTest/logocomp.png'
-    },
+      image: './assets/imagesTest/logocomp.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
+      outils: 'Figma, HTML, CSS',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#FFFFFF',
+        carac2: '#1B1B1E',
+        carac3: '#C9F0FF',
+        carac4: 'Roboto',
+        carac5: 'Visuels',
+      } },
     {
       categorie: '3d',
       titre: 'Le cube',
       numero: 3,
       type: 'Illustration 3D',
-      image: './assets/imagesTest/graphiste.png'
-    },
+      image: './assets/imagesTest/graphiste.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
+      outils: 'Figma, HTML, CSS',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#FFFFFF',
+        carac2: '#1B1B1E',
+        carac3: '#C9F0FF',
+        carac4: 'Roboto',
+        carac5: 'Visuels',
+      } },
     {
       categorie: 'illustration',
       titre: 'Le baiser',
       numero: 3,
       type: 'Illustration',
-      image: './assets/imagesTest/graphiste.png'
-    },
+      image: './assets/imagesTest/graphiste.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
+      outils: 'Figma, HTML, CSS',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        carac1: '#FFFFFF',
+        carac2: '#1B1B1E',
+        carac3: '#C9F0FF',
+        carac4: 'Roboto',
+        carac5: 'Visuels',
+      } },
     {
       categorie: 'illustration',
-      titre: 'Projet',
+      titre: 'Perso. 01',
       numero: 3,
       type: 'Illustration',
-      image: './assets/imagesTest/graphiste.png'
-    },
-    // Pour ajouter un nouveau projet copiez le code ci dessous
-    // ecrit en vert et collez le juste aprés la virgule du dernier projet
-    // ( attention à bien retirer les '//')
-    // {
-    //  titre: 'Projet C',
-    //  numero: 3,
-    //  type: 'Type 1',
-    //  image: 'chemin/vers/imageC.png'
-    //},
+      image: './assets/imagesTest/graphiste.png',
+    description: `Le projet consiste à concevoir l'UI-UX Design d'une application de calculatrice personnalisable.`,
+      outils: 'Procreate',
+      view: './assets/imagesTest/jerem.jpg',
+      palette: {
+        
+      } },
   ];
   var mouseX = 0;
 var mouseY = 0;
@@ -297,15 +362,16 @@ function moveImage() {
 
 
 moveImage();
-
+//TODO continuer d'implémenter la page projet dynamique via la tech url
 for(let i = 0; i < projets.length; i++){
   $('.project_bloc_right_blocLine').append(`
-    <a href="./projects.html" class="project_bloc_right_line">
-      <h2>${projets[i].titre}</h2>
-      <span>${projets[i].type}</span>
-      <div></div>
-    </a>
-  `);
+  <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line">
+    <h2>${projets[i].titre}</h2>
+    <span>${projets[i].type}</span>
+    <div></div>
+  </a>
+`);
+
 
   $('.project_bloc_right_line').eq(i).on('mouseenter', function(){
     $(this).append(`<img class="project_bloc_right_line_img" src="${projets[i].image}" alt="">`);
@@ -399,13 +465,6 @@ $(window).on('scroll', function() {
   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
 
 });
-
-
-
-
-
-
-
 
 
 

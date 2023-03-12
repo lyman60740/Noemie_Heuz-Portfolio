@@ -9,6 +9,15 @@
   "author": "lyman",
   "license": "ISC",
   "dependencies": {
+    "node": "^19.6.1",
     "three": "^0.149.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyman60740/Noemie_Heuz-Portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lyman60740/Noemie_Heuz-Portfolio/issues"
+  },
+  "homepage": "https://github.com/lyman60740/Noemie_Heuz-Portfolio#readme"
 }
