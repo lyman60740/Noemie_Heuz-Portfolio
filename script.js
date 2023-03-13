@@ -201,16 +201,16 @@ $('.contactButton_blue').on('mouseenter', function(){
 
   // Insertion data section projet 
 
- var projets = [
+  var projets = [
     {
       categorie: 'uxui',
       titre: 'Landing page',
       numero: 1,
       type: 'Site web',
-      image: './assets/imagesTest/jerem.jpg',
+      mockup: './assets/mockups/mockup_landing_page.png',
       description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
       outils: 'Figma, HTML, CSS',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#FFFFFF',
         carac2: '#1B1B1E',
@@ -224,10 +224,10 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Calculatrice',
       numero: 2,
       type: 'Application mobile',
-      image: './assets/imagesTest/jupiter.png',
+      mockup: './assets/mockups/content_mockup.png',
       description: `Le projet consiste à concevoir l'UI-UX Design d'une application mobile de calculatrice personnalisable.`,
       outils: 'Figma',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#E6E6F0',
         carac2: '#000000',
@@ -242,29 +242,29 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Page de connexion',
       numero: 3,
       type: 'Application mobile',
-      image: './assets/imagesTest/future.png',
+      mockup: './assets/mockups/page_de_connexion_1.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une application de calculatrice personnalisable.`,
       outils: 'Figma',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#000000',
         carac2: '#EEEBDA',
         carac3: '#F2AF9F',
         carac4: '#EC7D69',
         carac5: '#ABD0BF',
-        carac5: '#065143',
-        carac5: 'Syne Inter',
-        carac5: 'Visuels',
+        carac6: '#065143',
+        carac7: 'Syne Inter',
+        carac8: 'Visuels',
       } },
     {
       categorie: 'uxui',
       titre: 'Page de paiement',
       numero: 1,
       type: 'Application mobile',
-      image: './assets/imagesTest/graphiste.png',
+      mockup: './assets/mockups/maquette_page_de_paiement.svg',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
       outils: 'Figma, HTML, CSS',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#FFFFFF',
         carac2: '#1B1B1E',
@@ -274,13 +274,13 @@ $('.contactButton_blue').on('mouseenter', function(){
       } },
     {
       categorie: 'uxui',
-      titre: 'Projet - 5',
+      titre: 'Portfolio developpeur web',
       numero: 2,
       type: 'Type de projet',
-      image: './assets/imagesTest/logocomp.png',
+      mockup: './assets/mockups/imac.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
       outils: 'Figma, HTML, CSS',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#FFFFFF',
         carac2: '#1B1B1E',
@@ -293,10 +293,10 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Le cube',
       numero: 3,
       type: 'Illustration 3D',
-      image: './assets/imagesTest/graphiste.png',
+      mockup: './assets/mockupsTest/graphiste.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
       outils: 'Figma, HTML, CSS',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#FFFFFF',
         carac2: '#1B1B1E',
@@ -309,10 +309,10 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Le baiser',
       numero: 3,
       type: 'Illustration',
-      image: './assets/imagesTest/graphiste.png',
+      mockup: './assets/mockupsTest/graphiste.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une landing page pour un site de coaching personnalisé.`,
       outils: 'Figma, HTML, CSS',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         carac1: '#FFFFFF',
         carac2: '#1B1B1E',
@@ -325,10 +325,10 @@ $('.contactButton_blue').on('mouseenter', function(){
       titre: 'Perso. 01',
       numero: 3,
       type: 'Illustration',
-      image: './assets/imagesTest/graphiste.png',
+      mockup: './assets/mockups/mockup_perso_01.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une application de calculatrice personnalisable.`,
       outils: 'Procreate',
-      view: './assets/imagesTest/jerem.jpg',
+      view: './assets/mockupsTest/jerem.jpg',
       palette: {
         
       } },
@@ -375,7 +375,7 @@ for(let i = 0; i < projets.length; i++){
 
 
   $('.project_bloc_right_line').eq(i).on('mouseenter', function(){
-    $(this).append(`<img class="project_bloc_right_line_img" src="${projets[i].image}" alt="">`);
+    $(this).append(`<img class="project_bloc_right_line_img" src="${projets[i].mockup}" alt="">`);
     targetX = mouseX;
     targetY = mouseY;
     anime({

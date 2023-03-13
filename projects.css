@@ -1,5 +1,5 @@
 @import "./style.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Heebo:wght@500;600;700&family=Inter:wght@500;600;700&family=Roboto:wght@400;500;700;900&family=Syne:wght@500;600;700&display=swap');
 .about h1 {
     width: 100%;
     margin-bottom: 104px;
@@ -53,9 +53,9 @@ h1 {
     min-width: 100px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: #F1EFE3;
+    background-color: black;
     margin-left: -20px;
-    border: 1px solid black;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,6 +66,9 @@ h1 {
 .palette div :nth-child(1){
     margin-left: 0;
     
+}
+.palette div:first-child , .palette div:nth-last-child(2) {
+    border: 1px solid white;
 }
 .project_bloc_right {
     
