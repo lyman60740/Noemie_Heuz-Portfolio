@@ -15,6 +15,9 @@
 .about_bloc_content  {
     margin-bottom: 144px;
     width: 53.16vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 h1 {
     font-size: 5.46vw ;
@@ -37,9 +40,17 @@ h1 {
 }
 .project_presentation {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .project_presentation img {
     width: 100%;
+}
+.presentation-connexion video {
+    width: 330px;
+}
+.presentation-paiement video {
+    width: 330px;
 }
 .palette {
     height: 100vh;
@@ -61,10 +72,12 @@ h1 {
     justify-content: center;
     color: black;
     font-weight: 600;
-    font-size: 1.5vw;
+    font-size: 24px;
 }
 .palette div :nth-child(1){
     margin-left: 0;
+    max-width: 135px;
+    text-align: center;
     
 }
 .palette div:first-child , .palette div:nth-last-child(2) {
@@ -81,3 +94,79 @@ h1 {
 footer {
     margin-top: 194px;
 }
+
+.mockupBox-connexion {
+    align-self: center;
+}
+.mockupBox-calculatrice img {
+    max-width: 547px;
+    max-height: 609px;
+}
+.halo-calc {
+    width: 500px;
+    height: 500px;
+    transform: translate(60px, 58px);
+    position: absolute;
+    z-index: -1;
+}
+.halo-calc div {
+    border-radius: 50%;
+    background: linear-gradient(15deg, #A6BFFF 9.18%, #F68084 90.82%);
+    filter: blur(61px);
+    position: absolute;
+    aspect-ratio: 1;
+    transition: 2s ease-in-out;
+}
+.halo-calc div:nth-child(1){
+    width: 258px;
+    /* transform: translate(162px, -13px); */
+    top: -12px;
+    right: 89px;
+}
+.halo-calc div:nth-child(2){
+    width: 112px;
+    /* transform: translate(174px, -77px); */
+    top: -81px;
+    right: 216px;
+}
+.halo-calc div:nth-child(3){
+    /* transform: translate(131px, 172px); */
+    top: 207px;
+    right: 106px;
+    width: 249px;
+}
+.halo-calc div:nth-child(4){
+    /* transform: translate(-69px, -75px); */
+    width: 220px;
+    top: -75px;
+    right: 374px;
+}
+.halo-calc div:nth-child(5){
+    /* transform: translate(2px, 65px); */
+    top: 48px;
+    right: 238px;
+    width: 273px;
+}
+.halo-calc div:nth-child(6){
+    /* transform: translate(-58px, -56px); */
+    top: -100px;
+    width: 236px;
+}
+.custom-cursor {
+    position: absolute;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    border: 2px solid #84A3D2;
+    background-color: transparent; /* Vous pouvez changer la couleur du cercle ici */
+    pointer-events: none; /* Important pour permettre les interactions avec les éléments sous-jacents */
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #84A3D2;
+  } 

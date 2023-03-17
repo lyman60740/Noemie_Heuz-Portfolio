@@ -27,7 +27,7 @@ body {
     font-size: $text; 
     font-weight: 400;
     color: $white;
-    // cursor: none;
+    
     
 }
 ::-webkit-scrollbar {
@@ -41,7 +41,7 @@ h1, h2,h3 {
     margin: 0;
     padding: 0;
     margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block-end: 0; 
 }
 h1 {
     font-weight: 500;
@@ -396,7 +396,7 @@ article {
                 margin-bottom: 32px;
                 transition: all 300ms ease;
                 &:hover {
-                    cursor:pointer;
+                    cursor:none;
                     color: $blue;
                     
                     & div {
@@ -432,7 +432,7 @@ article {
                     max-width: 300px;
                     z-index: 99;
                   opacity: 0;
-                    
+                  pointer-events: none;
                 }
             }
         }
@@ -665,6 +665,7 @@ footer {
         }
     }
 }
+
 
 // .cursor {
 //     position: fixed;

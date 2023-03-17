@@ -222,7 +222,7 @@ function moveImage() {
 
   anime({
     targets: '.project_bloc_right_line img', 
-    left: (targetX + 150) + 'px',
+    left: (targetX - 100) + 'px',
     top: (targetY - 100) + 'px',
     easing: 'easeInOutSine',
     duration: 1,
@@ -239,10 +239,14 @@ const urlParams = new URLSearchParams(window.location.search);
 const titreUrl = decodeURIComponent(urlParams.get("titre"));
 
 for(let i = 0; i < projets.length; i++){
+
+
+
+  
   // Vérifier si le titre du projet en cours d'itération ne correspond pas au titre de l'URL
   if (projets[i].titre !== titreUrl) {
     $('.project_bloc_right_blocLine').append(`
-      <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line">
+      <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line" data=${projets[i].mockup} data-cat=${projets[i].categorie}>
         <h2>${projets[i].titre}</h2>
         <span>${projets[i].type}</span>
         <div></div>
@@ -250,73 +254,84 @@ for(let i = 0; i < projets.length; i++){
     `);
   }
 
+  
 
-  $('.project_bloc_right_line').eq(i).on('mouseenter', function(){
-    $(this).append(`<img class="project_bloc_right_line_img" src="${projets[i].mockup}" alt="">`);
-    targetX = mouseX;
-    targetY = mouseY;
-    anime({
-      targets: '.project_bloc_right_line img', 
-      opacity: 1,
-      delay: 100,
-    });
-
-    // Vérifier si la catégorie est "uxui" et ajouter la classe blue en conséquence
-    if (projets[i].categorie === 'uxui') {
-      $('.uxuiCategorie').addClass('blue');
-      $('.uxuiCategorie').prev().css({
-        'transform': 'scaleX(1.2)',
-        'background': '#84A3D2'
-      })
-    }
-    if (projets[i].categorie === '3d') {
-      $('.3dCategorie').addClass('blue');
-      $('.3dCategorie').prev().css({
-        'transform': 'scaleX(1.2)',
-        'background': '#84A3D2'
-      })
-    }
-    if (projets[i].categorie === 'illustration') {
-      $('.illustrationCategorie').addClass('blue');
-      $('.illustrationCategorie').prev().css({
-        'transform': 'scaleX(1.2)',
-        'background': '#84A3D2'
-      })
-      
-    }
-  });
-
-  $('.project_bloc_right_line').on('mouseleave', function(){
-    $(this).find('.project_bloc_right_line_img').remove();
-    
-    // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
-    if (projets[i].categorie === 'uxui') {
-      $('.uxuiCategorie').removeClass('blue');
-      $('.uxuiCategorie').prev().css({
-        'transform': 'scaleX(1)',
-        'background': '#F1EFE3'
-      })
-    }
-    if (projets[i].categorie === '3d') {
-      $('.3dCategorie').removeClass('blue');
-      $('.3dCategorie').prev().css({
-        'transform': 'scaleX(1)',
-        'background': '#F1EFE3'
-      })
-    }
-    if (projets[i].categorie === 'illustration') {
-      $('.illustrationCategorie').removeClass('blue');
-      $('.illustrationCategorie').prev().css({
-        'transform': 'scaleX(1)',
-        'background': '#F1EFE3'
-      })
-    }
-  });
+ 
   
 }
 
 
-$(window).on('scroll', function() {
+$('.project_bloc_right_line').on('mouseenter', function(){
+  $('.custom-cursor').css('opacity', '1')
+  var mockup = $(this).attr('data')
+  var categorie = $(this).attr('data-cat')
+  $(this).append(`<img class="project_bloc_right_line_img" src="${mockup}" alt="">`);
+  targetX = mouseX;
+  targetY = mouseY;
+  
+  anime({
+    targets: '.project_bloc_right_line img', 
+    opacity: 1,
+    delay: 100,
+  });
+
+  // Vérifier si la catégorie est "uxui" et ajouter la classe blue en conséquence
+  if (categorie === 'uxui') {
+    $('.uxuiCategorie').addClass('blue');
+    $('.uxuiCategorie').prev().css({
+      'transform': 'scaleX(1.2)',
+      'background': '#84A3D2'
+    })
+  }
+  if (categorie === '3d') {
+    $('.3dCategorie').addClass('blue');
+    $('.3dCategorie').prev().css({
+      'transform': 'scaleX(1.2)',
+      'background': '#84A3D2'
+    })
+  }
+  if (categorie === 'illustration') {
+    $('.illustrationCategorie').addClass('blue');
+    $('.illustrationCategorie').prev().css({
+      'transform': 'scaleX(1.2)',
+      'background': '#84A3D2'
+    })
+    
+  }
+});
+$('.project_bloc_right_line').on('mouseleave', function(){
+  $('.custom-cursor').css('opacity', '0')
+  $(this).find('.project_bloc_right_line_img').remove();
+  var categorie = $(this).attr('data-cat')
+  // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
+  if (categorie === 'uxui') {
+    $('.uxuiCategorie').removeClass('blue');
+    $('.uxuiCategorie').prev().css({
+      'transform': 'scaleX(1)',
+      'background': '#F1EFE3'
+    })
+  }
+  if (categorie === '3d') {
+    $('.3dCategorie').removeClass('blue');
+    $('.3dCategorie').prev().css({
+      'transform': 'scaleX(1)',
+      'background': '#F1EFE3'
+    })
+  }
+  if (categorie === 'illustration') {
+    $('.illustrationCategorie').removeClass('blue');
+    $('.illustrationCategorie').prev().css({
+      'transform': 'scaleX(1)',
+      'background': '#F1EFE3'
+    })
+  }
+});
+
+
+
+
+
+$(window).on('scroll', function () {
   var scrollPos = $(window).scrollTop();
   var blocPos = $('.project_bloc').offset().top;
   var blocHeight = $('.project_bloc').outerHeight();
@@ -330,7 +345,8 @@ $(window).on('scroll', function() {
   var blocRightPos = $('.project_bloc_right').offset().top;
   var blocRightHeight = $('.project_bloc_right').outerHeight();
   var topLimit = blocRightPos - blocLeftHeight / 2;
-  var bottomLimit = (blocRightPos + blocRightHeight - windowHeight + blocLeftHeight / 2)+150;
+  var blocLineBottom = $('.project_bloc_right_blocLine').offset().top + $('.project_bloc_right_blocLine').outerHeight();
+  var bottomLimit = (blocLineBottom - windowHeight + blocLeftHeight / 2);
 
   if (scrollPos >= topLimit && scrollPos <= bottomLimit) {
     if (blocLeftHeight <= windowHeight) {
@@ -338,14 +354,23 @@ $(window).on('scroll', function() {
     } else {
       newTranslateY = ((windowHeight - blocLeftHeight) / 2) + 'px';
     }
+  } else if (scrollPos > bottomLimit) { // Add this condition to handle the case when the scroll position goes beyond the bottom limit
+    newTranslateY = (bottomLimit - topLimit)*1.28 + 'px';
   }
 
   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
-
 });
 
 
 
+$('.project_bloc_right_line').on("mousemove", function (e) {
+  var mouseX = e.pageX;
+  var mouseY = e.pageY;
+  $(".custom-cursor").css({
+    "top": mouseY - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
+    "left": mouseX - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
+  });
+});
 
 
 

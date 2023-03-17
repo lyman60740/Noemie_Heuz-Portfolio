@@ -369,7 +369,7 @@ article {
   transition: all 300ms ease;
 }
 .project_bloc_right_line:hover {
-  cursor: pointer;
+  cursor: none;
   color: #84A3D2;
 }
 .project_bloc_right_line:hover div {
@@ -402,6 +402,7 @@ article {
   max-width: 300px;
   z-index: 99;
   opacity: 0;
+  pointer-events: none;
 }
 
 .blue {
