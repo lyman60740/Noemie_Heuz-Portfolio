@@ -10,6 +10,11 @@ const projet = projets.find((p) => p.titre === titre);
 
     $('main').prepend(`
     <article class="about">
+              <div class="about-catBox">
+              <div class="about-catBox-tiret"></div>
+              <h3 data-cat=${projet.categorie}></h3>
+              </div>
+                
                 <h1 id="about">${projet.titre}</h1>
                 <div class="about_bloc">
                     <section class="about_bloc_content">
@@ -39,7 +44,7 @@ const projet = projets.find((p) => p.titre === titre);
                     </video>
                     </div>
                     
-                    <section class="palette">
+                    <section class="palette palette-${projet.id}">
                        
                     </section>
                 </div>
@@ -48,6 +53,23 @@ const projet = projets.find((p) => p.titre === titre);
             `)
 
 
+
+$(document).ready(function () {
+  var cat = $(".about h3").attr("data-cat");
+
+  if (cat === "uxui") {
+    $(".about h3").text("UI - UX Design");
+  } else if (cat === "illustration") {
+    $(".about h3").text("Illustration");
+  }
+});
+
+$('.mockupBox-paiement').prepend(`
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+`)
 
 const paletteSection = $('.palette');
 paletteSection.empty();
@@ -117,19 +139,86 @@ $(".mockupBox-calculatrice").prepend(`
   <div></div>
   <div></div>
   <div></div>
-  <div></div>
+  
   </div>
 `)
+
+$('.presentation-paiement').after(`
+<section class="selection-paiement">
+  <div>
+  <img src="./assets/maquette_paiement1.png" alt="">
+  <img src="./assets/maquette_ajouter_une_carte-bancaire.png" alt="">
+  <img src="./assets/maquette_verifier_ma_commande.png" alt="">
+  <img src="./assets/maquette_verification.png" alt="">
+  </div>
+</section>
+
+`);
+$('.presentation-developpeur').after(`
+<section class="selection-developpeur">
+  <div>
+  <img src="./assets/maquette_portfolio_developer_web_light.png" alt="">
+  <img src="./assets/maquette_portfolio_developer_web_dark.png" alt="">
+  </div>
+</section>
+
+`);
+$('.palette-developpeur div:nth-child(5) span').after(`
+  <span>Open Sans</span>
+`)
+
+$('.presentation-baiser,.presentation-perso').html(`
+<img src="${projet.view}" alt="Image">
+`);
+
+$('.palette-baiser, .palette-perso').remove();
+$(document).ready(function() {
+  $('.presentation-baiser img').on('load', function() {
+    $('.presentation-baiser-loader').hide();
+    $('.presentation-baiser img').show();
+  });
+});
+
+
+function getTransformValuesFromMatrix(matrix) {
+  var values = matrix.split('(')[1].split(')')[0].split(',');
+  var a = parseFloat(values[0]);
+  var b = parseFloat(values[1]);
+  var c = parseFloat(values[2]);
+  var d = parseFloat(values[3]);
+
+  var scaleX = Math.sqrt(a * a + b * b);
+  var scaleY = Math.sqrt(c * c + d * d);
+  var rotate = Math.atan2(b, a) * (180 / Math.PI);
+
+  return { scaleX: scaleX, scaleY: scaleY, rotate: rotate };
+}
+
+function updateParallax(mouseX, mouseY) {
+  $(".halo-calc").css({
+    "transform": "translate(" + ((-mouseX * 0.05) + 100) + "px, " + ((-mouseY * 0.05) + 100) + "px)",
+  });
+
+  $(".mockupBox-connexion div:nth-child(1), .mockupBox-connexion div:nth-child(2), .mockupBox-connexion div:nth-child(3), .mockupBox-connexion div:nth-child(4), .mockupBox-connexion div:nth-child(5), .mockupBox-connexion div:nth-child(6), .mockupBox-connexion div:nth-child(7), .mockupBox-connexion div:nth-child(8), .mockupBox-connexion div:nth-child(9)").each(function() {
+    var currentTransform = $(this).css("transform");
+    var transformValues = getTransformValuesFromMatrix(currentTransform);
+
+    $(this).css({
+      "transform": "translate(" + ((-mouseX * 0.05)+50) + "px, " + ((-mouseY * 0.05)+0) + "px) rotate(" + transformValues.rotate + "deg) scale(" + transformValues.scaleX + ", " + transformValues.scaleY + ")"
+    });
+  });
+}
+
 $(document).on("mousemove", function (event) {
   var mouseX = event.pageX;
   var mouseY = event.pageY;
 
-
-
-  $(".halo-calc").css({
-    "transform": "translate(" + ((-mouseX * 0.05) + 100) + "px, " + ((-mouseY * 0.05) + 100) + "px)",
+  requestAnimationFrame(function() {
+    updateParallax(mouseX, mouseY);
   });
 });
+
+
 
 
 setInterval(function() {
@@ -150,6 +239,67 @@ setInterval(function() {
   });
 },2000)
   
+// Anime hover presentation landing
+
+$('.presentation-landing').on('mouseenter', function(){
+  $('.custom-cursor-github').css({
+    'opacity': '1',
+    'transform': 'scale(1)'
+  })
+});
+$('.presentation-landing').on('mouseleave', function(){
+  $('.custom-cursor-github').css({
+    'opacity': '0',
+    'transform': 'scale(0)'
+  })
+});
+$('.presentation-landing').on("mousemove", function (e) {
+  var mouseX = e.pageX;
+  var mouseY = e.pageY;
+  $(".custom-cursor-github").css({
+    "top": mouseY - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
+    "left": mouseX - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
+  });
+});
+//TODO ajouter lien github quand dispo
+$('.presentation-landing').click(function() {
+  window.location.href = '#';
+});
+
+
+//Anim flowers
+
+$(".mockupBox-connexion").prepend(`
+  
+  <div><img src="./assets/cercle_middle.svg" alt=""></div>
+  <div><img src="./assets/cercle_middle.svg" alt=""></div>
+  <div><img src="./assets/cercle_middle.svg" alt=""></div>
+  <div><img src="./assets/tube_middle.svg" alt=""></div>
+  <div><img src="./assets/tube_middle.svg" alt=""></div>
+  <div><img src="./assets/tube_middle.svg" alt=""></div>
+  <div><img src="./assets/feuille_middle.svg" alt=""></div>
+  <div><img src="./assets/feuille_middle.svg" alt=""></div>
+  <div><img src="./assets/feuille_middle.svg" alt=""></div>
+  
+ 
+`)
+$(".mockupBox-developpeur").prepend(` 
+  <div></div>
+  <img class="imac-dark" src="./assets/mockups/imac-dark.png" alt="">
+`)
+$(".mockupBox-developpeur").mouseleave(function(){
+  $(".mockupBox-developpeur div").addClass('mockup-developpeur-neon')
+  setTimeout(function(){
+    $('.imac-dark').css('opacity', '0')
+  }, 500)
+})
+$(".mockupBox-developpeur").mouseenter(function(){
+  $(".mockupBox-developpeur div").removeClass('mockup-developpeur-neon')
+    $('.imac-dark').css('opacity', '1')
+  
+  
+})
+
 
 // $(document).ready(function() {
 //   $('.palette div').each(function() {

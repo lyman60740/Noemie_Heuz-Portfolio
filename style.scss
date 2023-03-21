@@ -3,19 +3,16 @@
 $white : #F1EFE3;
 $black : black;
 $lightWhite : rgba(241, 239, 227, 0.5);
-$blueGradient : linear-gradient(to bottom, #84A3D2, #EDEEE0);
-$blue : #84A3D2;
+$blue : #988BE3;
+$blueGradient : linear-gradient(to bottom, $blue, #EDEEE0);
 
 //TODO Faire des breakpoint sur des paliers notamment pour les fonts
-//TODO Maj des titres des projets 
-//TODO Maj des images projets 
-//TODO Liens reseaux en dessous du send corriger le sous lignage en transition color
 //TODO revoir les marges entres les projets
 //TODO corriger le bug dans boutton CV
 
-$text : 1.25vw; 
-$h1 : 6.46vw;
-$h2: 56px;
+$text : 1.15vw; 
+$h1 : 4.85vw;;
+$h2: 2.7vw;
 html {
     scroll-behavior: smooth;
   }
@@ -73,25 +70,27 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-top: 17.42vh;
+    padding-top: 17vh;
 }
 .container {
     
     height: 100%;
-    padding: 0 10.74vw;
+    padding: 0 19vw;
 }
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height:  7.837vh;
-    width: 100%;
-    
+    height: 7.837vh;
+    width: 62%;
+    position: fixed;
+    background: black;
+    z-index: 100;
     & nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 53.16vw;
+        width: 65%;;
         & a {
            
             &::after{
@@ -114,6 +113,7 @@ header {
             align-items: center;
             & img {
                 transition: transform 400ms ease-in-out;
+                
             }
             &:hover img {
                 transform: rotate(90deg);
@@ -140,6 +140,7 @@ article {
     align-items: center;
     & img {
         margin-right: 24px;
+        transform: translateY(2px);
     }
 }
 .tiret {
@@ -149,14 +150,70 @@ article {
     margin-right: 52px;
 }
 .landing {
-    width: 64.02%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    &_eyeContain {
+        width: 36%;
+        display: flex;
+        &_eyeBox {
+            width: 104px;
+            border: white 1px solid;
+            border-radius: 200px;
+            margin-left: 65px;
+            &_paupieres {
+                font-size: 0 !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                height: 100%;
+                
+                &-top {
+                    width: 100%;
+                    height: 25%;
+                    border-top-left-radius: 100px;
+                    border-top-right-radius: 100px;
+                    transform: translateY(-55px);
+                    transition: 300ms ease-in;
+                    transform-origin: bottom;
+                    background: linear-gradient(195deg, #988BE3 27.46%, #EE5622 74.66%)
+                }
+                &-bottom {
+                    width: 100%;
+                    height: 25%;
+                    border-bottom-left-radius: 100px;
+                    border-bottom-right-radius: 100px;
+                    transform: translateY(55px);
+                    transition: 300ms ease-in;
+                    transform-origin: top;
+                    background: linear-gradient(1deg, #988BE3 27.46%, #EE5622 74.66%);
+                }
+                &-iris {
+                    width: 100%;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    background: white;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: -1;
+                    &-pupille {
+                        width: 53.85%;
+                        aspect-ratio: 1;
+                        background: $black;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+        
+    }
     &_bloc {
         display: flex;
-    flex-direction: column;
-    
+        flex-direction: column;
+        width: 64.02%;
         &_text {
 
             & h2 {
@@ -318,17 +375,32 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    &-catBox {
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        margin-bottom: 27px;
+        &-tiret {
+            width: 24px;
+            height: 2px;
+            background-color: white;
+        }
+        & h3 {
+            margin-left: 56px;
+        }
+    }
+    
     & h2 {
         width: 100%;
     }
     &_bloc {
         display: flex;
     flex-direction: column;
-    width: 53.16vw;
+    width: 65%;
         &_content {
             &_photo {
-                width: 53.16vw;
-                height: 26vw;
+                width: 100%;
+                height: 20vw;
                 border-radius: 28px;
                 background-image: url(./assets/photo.jpg);
                 background-position:center;
@@ -382,7 +454,7 @@ article {
             &:hover {
                 // cursor:none;
             }
-            width: 53.16vw;
+            width: 65%;
             display: flex;
             flex-direction: column;
             &_blocLine {
@@ -429,7 +501,7 @@ article {
                 }
                 & img {
                     position: absolute;
-                    max-width: 300px;
+                    max-height: 300px;
                     z-index: 99;
                   opacity: 0;
                   pointer-events: none;
@@ -438,6 +510,7 @@ article {
         }
     }
 }
+
 .blue {
     color: $blue;
     
@@ -448,7 +521,7 @@ article {
         display: flex;
         justify-content: flex-end;
         &_right {
-            width: 53.16vw;
+            width: 65%;
             display: flex;
             flex-direction: column;
             & form {
@@ -511,22 +584,17 @@ article {
                     width: 215px;
                     margin-bottom: 8px;
                     & span {
-                        &::after{
-                            content: '';
-                            height: 2px;
-                            background: $blue;
-                            width: 100%;
-                            display: inherit;
-                            transform: scaleX(0);
-                            transform-origin: left;
-                            transition: transform 200ms ease-in-out;
-                        }
-                        &:hover::after{
-                            transform: scaleX(1);
+                       transition: color 200ms ease-in;
+                        &:hover {
+                            color: $blue;
                         }
                     }
                     & img {
                         transition: transform 400ms ease-in-out;
+                        fill: $blue;
+                        & path {
+                            
+                        }
                     }
                     &:hover img {
                         transform: rotate(45deg);
@@ -568,7 +636,7 @@ footer {
 .link {
     display: flex;
     justify-content: space-between;
-    width: 53.16vw;
+    width: 65%;
     &_home {
         
         display: flex;
@@ -665,8 +733,58 @@ footer {
         }
     }
 }
-
-
+.custom-cursor {
+    position: absolute;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    border: 1px solid $blue;
+    background-color: transparent; /* Vous pouvez changer la couleur du cercle ici */
+    pointer-events: none; /* Important pour permettre les interactions avec les éléments sous-jacents */
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 500ms ease, transform 500ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: $blue;
+    transform: scale(0);
+    transform-origin: center;
+    & img {
+        width: 40px;
+        aspect-ratio: 1;
+    }
+    &-github {
+        position: absolute;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    border: 1px solid $blue;
+    background-color: transparent; /* Vous pouvez changer la couleur du cercle ici */
+    pointer-events: none; /* Important pour permettre les interactions avec les éléments sous-jacents */
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 500ms ease, transform 500ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: $blue;
+    font-size: 16px;
+    transform: scale(0);
+    transform-origin: center;
+    & img {
+        margin-top: 10px;
+        width: 15px;
+        aspect-ratio: 1;
+    }
+    }
+  } 
+  
 // .cursor {
 //     position: fixed;
 //     top: 0;

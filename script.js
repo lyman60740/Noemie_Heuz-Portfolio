@@ -28,6 +28,31 @@ cvButton.on('mouseenter', function(e){
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
   }
+
+  var eyeAnimation = anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-top', 
+    translateY: -40,
+    easing: 'easeOutQuart',
+    duration: 300
+  });
+  cvButtonAnimations.push(eyeAnimation);
+
+  var eyeAnimation1 = anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-bottom', 
+    translateY: 40,
+    easing: 'easeOutQuart',
+    duration: 300
+  });
+  cvButtonAnimations.push(eyeAnimation1);
+
+  var eyeAnimation3 = anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-iris-pupille', 
+    scale: 0.8,
+    duration: 1200,
+    easing: 'easeOutQuart'
+  });
+  cvButtonAnimations.push(eyeAnimation3);
+
 //TODO trouver comment animer seulement le bouton ciblé 
   // Animer .cvButton_circleWhite
   var animation1 = anime({
@@ -63,7 +88,22 @@ cvButton.on('mouseleave', function(e){
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
   }
-
+  anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-top', 
+    translateY: -55,
+    easing: 'easeOutQuart',
+  });
+  anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-bottom', 
+    translateY: 55,
+    easing: 'easeOutQuart',
+  });
+   anime({
+    targets: '.landing_eyeContain_eyeBox_paupieres-iris-pupille', 
+    scale: 1,
+    duration: 1200,
+    easing: 'easeOutQuart'
+  });
   // Réinitialiser .cvButton_circleWhite
   anime({
     targets:'.cvButton_circleWhite', 
@@ -220,10 +260,14 @@ function moveImage() {
   targetX -= diffX / 10;
   targetY -= diffY / 10;
 
+  var img = $('.project_bloc_right_line img');
+  var imgWidth = img.width();
+  var imgHeight = img.height();
+
   anime({
     targets: '.project_bloc_right_line img', 
-    left: (targetX - 100) + 'px',
-    top: (targetY - 100) + 'px',
+    left: (targetX - imgWidth / 2) + 'px',
+    top: (targetY - imgHeight / 2) + 'px',
     easing: 'easeInOutSine',
     duration: 1,
   });
@@ -238,31 +282,29 @@ moveImage();
 const urlParams = new URLSearchParams(window.location.search);
 const titreUrl = decodeURIComponent(urlParams.get("titre"));
 
-for(let i = 0; i < projets.length; i++){
+for (let i = 0; i < projets.length; i++) {
+  const isCurrentProject = projets[i].titre === titreUrl;
+  const disabledClass = isCurrentProject ? 'disabled-project' : '';
 
-
-
+  // Ajouter une condition pour vérifier si l'id du projet est 'baiser'
+  const mockup = projets[i].id === 'baiser' ? './assets/mockup_le_baiser2.png' : projets[i].mockup;
   
-  // Vérifier si le titre du projet en cours d'itération ne correspond pas au titre de l'URL
-  if (projets[i].titre !== titreUrl) {
-    $('.project_bloc_right_blocLine').append(`
-      <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line" data=${projets[i].mockup} data-cat=${projets[i].categorie}>
-        <h2>${projets[i].titre}</h2>
-        <span>${projets[i].type}</span>
-        <div></div>
-      </a>
-    `);
-  }
-
-  
-
- 
-  
+  $('.project_bloc_right_blocLine').append(`
+    <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
+      <h2>${projets[i].titre}</h2>
+      <span>${projets[i].type}</span>
+      <div></div>
+    </a>
+  `);
 }
 
 
+
 $('.project_bloc_right_line').on('mouseenter', function(){
-  $('.custom-cursor').css('opacity', '1')
+  $('.custom-cursor').css({
+    'opacity': '1',
+    'transform': 'scale(1)'
+  })
   var mockup = $(this).attr('data')
   var categorie = $(this).attr('data-cat')
   $(this).append(`<img class="project_bloc_right_line_img" src="${mockup}" alt="">`);
@@ -300,7 +342,10 @@ $('.project_bloc_right_line').on('mouseenter', function(){
   }
 });
 $('.project_bloc_right_line').on('mouseleave', function(){
-  $('.custom-cursor').css('opacity', '0')
+  $('.custom-cursor').css({
+    'opacity': '0',
+    'transform': 'scale(0)'
+  })
   $(this).find('.project_bloc_right_line_img').remove();
   var categorie = $(this).attr('data-cat')
   // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
@@ -371,6 +416,58 @@ $('.project_bloc_right_line').on("mousemove", function (e) {
     "left": mouseX - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
   });
 });
+
+$(document).ready(function() {
+  var parentWidth = $('.landing_eyeContain_eyeBox_paupieres-iris').width();
+  var parentHeight = $('.landing_eyeContain_eyeBox_paupieres-iris').height();
+
+  $(document).on('mousemove', function(event) {
+    var mouseX = event.pageX;
+    var mouseY = event.pageY;
+
+    var distanceX = mouseX - $('.landing_eyeContain_eyeBox_paupieres-iris').offset().left - parentWidth / 2;
+    var distanceY = mouseY - $('.landing_eyeContain_eyeBox_paupieres-iris').offset().top - parentHeight / 2;
+    var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+    var pupilX = distanceX / distance * (parentWidth / 2 - $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').width() / 2);
+    var pupilY = distanceY / distance * (parentHeight / 2 - $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').height() / 2);
+
+    // Nouveau code pour gérer l'animation des paupières
+    var minDistance = 100; // Distance minimale pour fermer complètement les paupières
+    var maxDistance = 400; // Distance maximale pour déclencher l'animation
+    var eyelidTopY, eyelidBottomY;
+    
+    if (distance < minDistance) {
+      eyelidTopY = 0;
+      eyelidBottomY = 0;
+    } else if (distance < maxDistance) {
+      var ratio = 1 - (distance - minDistance) / (maxDistance - minDistance); // Pourcentage de fermeture des paupières
+      eyelidTopY = -55 + ratio * 55;
+      eyelidBottomY = 55 - ratio * 55;
+    } else {
+      eyelidTopY = -55;
+      eyelidBottomY = 55;
+    }
+
+    $('.landing_eyeContain_eyeBox_paupieres-top').css({
+      transform: 'translateY(' + eyelidTopY + 'px)'
+    });
+    $('.landing_eyeContain_eyeBox_paupieres-bottom').css({
+      transform: 'translateY(' + eyelidBottomY + 'px)'
+    });
+    // Fin du nouveau code
+
+    $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').css({
+      transform: 'translate(' + pupilX + 'px,' + pupilY + 'px)'
+    });
+  });
+});
+
+
+
+
+
+
 
 
 
