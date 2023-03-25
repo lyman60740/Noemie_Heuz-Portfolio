@@ -24,7 +24,7 @@ body {
     font-size: $text; 
     font-weight: 400;
     color: $white;
-    
+    overflow: hidden;
     
 }
 ::-webkit-scrollbar {
@@ -51,7 +51,42 @@ h2 {
     transform: translateX(-5px);
     margin-bottom: 104px;
 }
-
+.name {
+    display: flex;
+    overflow: hidden;
+    & div {
+        transform: translateY(60px);
+    }
+}
+.metier {
+    display: flex;
+    overflow: hidden;
+    & div {
+        transform: translateY(96px);
+    }
+}
+.preload-opacity {
+    animation: preload-opacity 3000ms 6000ms forwards cubic-bezier(.215,.61,.355,1);
+}
+@keyframes preload-opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.letterAnime {
+    animation: letterAnime 1000ms 500ms forwards cubic-bezier(.215,.61,.355,1);
+}
+@keyframes letterAnime {
+    0% {
+        transform: translateY(60px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
 h3 {
     font-weight: 400;
     font-size: $text;
@@ -86,6 +121,8 @@ header {
     position: fixed;
     background: black;
     z-index: 100;
+    opacity: 0;
+    animation: preload-opacity 3000ms 7000ms forwards cubic-bezier(.215,.61,.355,1);
     & nav {
         display: flex;
         align-items: center;
@@ -226,15 +263,24 @@ article {
                 display: flex;
                 align-items: center;
             }
+           
         }
     }
 }
-
+.space {
+    white-space: pre-wrap;
+}
 .bloc_cta {
     display: flex;
     align-items: center;
     margin-top: 104px;
+    opacity: 0;
     justify-content: flex-end;
+    animation: preload-opacity 3000ms 7500ms forwards cubic-bezier(.215,.61,.355,1);
+}
+.landing_bloc_text_descr {
+    opacity: 0;
+    animation: preload-opacity 3000ms 6500ms forwards cubic-bezier(.215,.61,.355,1);
 }
 .cvButton {
     
@@ -410,6 +456,7 @@ article {
             &_text p:nth-child(1){
                 margin-top: 56px;
             }
+            
         }
     }
 }
@@ -755,6 +802,10 @@ footer {
     & img {
         width: 40px;
         aspect-ratio: 1;
+    }
+    & span {
+        font-size: 24px;
+        font-weight: 600;
     }
     &-github {
         position: absolute;

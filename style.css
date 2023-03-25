@@ -11,6 +11,7 @@ body {
   font-size: 1.15vw;
   font-weight: 400;
   color: #F1EFE3;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -42,6 +43,46 @@ h2 {
   margin-bottom: 104px;
 }
 
+.name {
+  display: flex;
+  overflow: hidden;
+}
+.name div {
+  transform: translateY(60px);
+}
+
+.metier {
+  display: flex;
+  overflow: hidden;
+}
+.metier div {
+  transform: translateY(96px);
+}
+
+.preload-opacity {
+  animation: preload-opacity 3000ms 6000ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes preload-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.letterAnime {
+  animation: letterAnime 1000ms 500ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes letterAnime {
+  0% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 h3 {
   font-weight: 400;
   font-size: 1.15vw;
@@ -79,6 +120,8 @@ header {
   position: fixed;
   background: black;
   z-index: 100;
+  opacity: 0;
+  animation: preload-opacity 3000ms 7000ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 header nav {
   display: flex;
@@ -217,11 +260,22 @@ article {
   align-items: center;
 }
 
+.space {
+  white-space: pre-wrap;
+}
+
 .bloc_cta {
   display: flex;
   align-items: center;
   margin-top: 104px;
+  opacity: 0;
   justify-content: flex-end;
+  animation: preload-opacity 3000ms 7500ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.landing_bloc_text_descr {
+  opacity: 0;
+  animation: preload-opacity 3000ms 6500ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .cvButton {
@@ -710,6 +764,10 @@ footer > .markName {
 .custom-cursor img {
   width: 40px;
   aspect-ratio: 1;
+}
+.custom-cursor span {
+  font-size: 24px;
+  font-weight: 600;
 }
 .custom-cursor-github {
   position: absolute;

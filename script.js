@@ -464,6 +464,29 @@ $(document).ready(function() {
 });
 
 
+$(document).ready(function() {
+  var originalElement;
+
+  $('.project_bloc_right_line[data-cat="3d"]').hover(
+    function() {
+      // Lorsque le curseur survole l'élément
+      var $customCursor = $('.custom-cursor');
+      originalElement = $customCursor.html();
+      $customCursor.html('<span>SOON</span>');
+      $(this).on('click', function(event) {
+        event.preventDefault();
+      });
+    },
+    function() {
+      // Lorsque le curseur sort de l'élément
+      $('.custom-cursor').html(originalElement);
+      $(this).off('click');
+    }
+  );
+});
+
+
+
 
 
 
