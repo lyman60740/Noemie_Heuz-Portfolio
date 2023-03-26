@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Heebo:wght@500;600;700&family=Inter:wght@500;600;700&family=Roboto:wght@400;500;700;900&family=Syne:wght@500;600;700&display=swap');
+body {
+    overflow: visible !important;
+}
+header {
+    animation: none;
+    opacity: 1;
+}
 .about h1 {
     width: 99%;
     margin-bottom: 104px;
@@ -124,6 +131,10 @@ h1 {
 }
 .presentation-connexion video {
     width: 330px;
+}
+.presentation-perso img {
+    width: 50%;
+    margin-bottom: 327px;
 }
 .presentation-paiement video {
     width: 330px;

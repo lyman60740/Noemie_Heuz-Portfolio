@@ -7,48 +7,45 @@ $( document ).ready(function(){
     $('.cvButton_circleWhite').css('transform', 'scale(0)');
     $('.contactButton_circleWhite').css('transform', 'scale(0)');
 
-//     var elem = document.documentElement; // obtenir l'élément HTML
+    
 
-//   $('h1').on('click', function() {
-//     if (elem.requestFullscreen) {
-//       elem.requestFullscreen();
-//     } else if (elem.mozRequestFullScreen) { /* Firefox */
-//       elem.mozRequestFullScreen();
-//     } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari et Opera */
-//       elem.webkitRequestFullscreen();
-//     } else if (elem.msRequestFullscreen) { /* IE/Edge */
-//       elem.msRequestFullscreen();
-//     }
-//   });
 })
 var cvButtonAnimations = []; // créer un tableau pour stocker les animations
 
+const paupTop = $('.landing_eyeContain_eyeBox_paupieres-top')
+const paupBottom = $('.landing_eyeContain_eyeBox_paupieres-bottom')
+const iris = $('.landing_eyeContain_eyeBox_paupieres-iris-pupille')
+var isCvButtonHovered = false;
+
 cvButton.on('mouseenter', function(e){
+  isCvButtonHovered = true;
   // Mettre en pause toutes les animations en cours
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
   }
 
-  var eyeAnimation = anime({
-    targets: '.landing_eyeContain_eyeBox_paupieres-top', 
-    translateY: -40,
-    easing: 'easeOutQuart',
-    duration: 300
-  });
-  cvButtonAnimations.push(eyeAnimation);
-
-  var eyeAnimation1 = anime({
-    targets: '.landing_eyeContain_eyeBox_paupieres-bottom', 
-    translateY: 40,
-    easing: 'easeOutQuart',
-    duration: 300
-  });
-  cvButtonAnimations.push(eyeAnimation1);
+          gsap.to(paupTop, {
+              // this is the vars object
+              // it contains properties to animate
+              height: 175,
+              // and special properties
+              
+              
+              
+            })
+            gsap.to(paupBottom, {
+              // this is the vars object
+              // it contains properties to animate
+              height: 175,
+              // and special properties
+              
+              
+              
+            })
 
   var eyeAnimation3 = anime({
     targets: '.landing_eyeContain_eyeBox_paupieres-iris-pupille', 
     scale: 0.8,
-    duration: 1200,
     easing: 'easeOutQuart'
   });
   cvButtonAnimations.push(eyeAnimation3);
@@ -84,26 +81,12 @@ cvButton.on('mouseenter', function(e){
 });
 
 cvButton.on('mouseleave', function(e){
+  isCvButtonHovered = false;
   // Mettre en pause toutes les animations en cours
   for (var i = 0; i < cvButtonAnimations.length; i++) {
     cvButtonAnimations[i].pause();
   }
-  anime({
-    targets: '.landing_eyeContain_eyeBox_paupieres-top', 
-    translateY: -55,
-    easing: 'easeOutQuart',
-  });
-  anime({
-    targets: '.landing_eyeContain_eyeBox_paupieres-bottom', 
-    translateY: 55,
-    easing: 'easeOutQuart',
-  });
-   anime({
-    targets: '.landing_eyeContain_eyeBox_paupieres-iris-pupille', 
-    scale: 1,
-    duration: 1200,
-    easing: 'easeOutQuart'
-  });
+  
   // Réinitialiser .cvButton_circleWhite
   anime({
     targets:'.cvButton_circleWhite', 
@@ -191,11 +174,35 @@ cvButton.on('click', function(){
 // CONTACT BUTTON
 var contactButtonAnimations = []; // créer un tableau pour stocker les animations
 $('.contactButton_blue').on('mouseenter', function(){
+  isCvButtonHovered = true;
     // Mettre en pause toutes les animations en cours
     for (var i = 0; i < contactButtonAnimations.length; i++) {
       contactButtonAnimations[i].pause();
     }
-  
+    gsap.to(paupTop, {
+      // this is the vars object
+      // it contains properties to animate
+      height: 175,
+      // and special properties
+      
+      
+      
+    })
+    gsap.to(paupBottom, {
+      // this is the vars object
+      // it contains properties to animate
+      height: 175,
+      // and special properties
+      
+      
+      
+    })
+    var eyeAnimation13 = anime({
+      targets: '.landing_eyeContain_eyeBox_paupieres-iris-pupille', 
+      scale: 0.8,
+      easing: 'easeOutQuart'
+    });
+    cvButtonAnimations.push(eyeAnimation13);
     // Animer .contactButton_circleWhite
     var animation11 = anime({
       targets: '.contactButton_circleWhite',
@@ -221,7 +228,7 @@ $('.contactButton_blue').on('mouseenter', function(){
     for (var i = 0; i < contactButtonAnimations.length; i++) {
       contactButtonAnimations[i].pause();
     }
-  
+    isCvButtonHovered = false;
     // Réinitialiser .contactButton_circleWhite
     anime({
       targets: '.contactButton_circleWhite',
@@ -372,11 +379,23 @@ $('.project_bloc_right_line').on('mouseleave', function(){
   }
 });
 
-
-
-
-
+$(document).ready(function() {
 $(window).on('scroll', function () {
+
+  if ($("#about").offset().top - $(window).scrollTop() <= 100) {
+    $(".arrowScroll").css("transform", "rotate(180deg)");
+    $(".arrowScroll").on('click', function(){
+      $(window).scrollTop(0);
+    })
+    console.log('work')
+  } else {
+    $(".arrowScroll").css("transform", "rotate(0deg)");
+    $(".arrowScroll").on('click', function(event){
+      event.preventDefault();
+      $(window).scrollTop(($("#about").offset().top)-70);
+    })
+  }
+
   var scrollPos = $(window).scrollTop();
   var blocPos = $('.project_bloc').offset().top;
   var blocHeight = $('.project_bloc').outerHeight();
@@ -405,63 +424,9 @@ $(window).on('scroll', function () {
 
   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');
 });
-
-
-
-$('.project_bloc_right_line').on("mousemove", function (e) {
-  var mouseX = e.pageX;
-  var mouseY = e.pageY;
-  $(".custom-cursor").css({
-    "top": mouseY - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
-    "left": mouseX - 52 + "px", // Soustraire la moitié de la taille du cercle pour centrer le curseur
-  });
 });
 
-$(document).ready(function() {
-  var parentWidth = $('.landing_eyeContain_eyeBox_paupieres-iris').width();
-  var parentHeight = $('.landing_eyeContain_eyeBox_paupieres-iris').height();
 
-  $(document).on('mousemove', function(event) {
-    var mouseX = event.pageX;
-    var mouseY = event.pageY;
-
-    var distanceX = mouseX - $('.landing_eyeContain_eyeBox_paupieres-iris').offset().left - parentWidth / 2;
-    var distanceY = mouseY - $('.landing_eyeContain_eyeBox_paupieres-iris').offset().top - parentHeight / 2;
-    var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-
-    var pupilX = distanceX / distance * (parentWidth / 2 - $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').width() / 2);
-    var pupilY = distanceY / distance * (parentHeight / 2 - $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').height() / 2);
-
-    // Nouveau code pour gérer l'animation des paupières
-    var minDistance = 100; // Distance minimale pour fermer complètement les paupières
-    var maxDistance = 400; // Distance maximale pour déclencher l'animation
-    var eyelidTopY, eyelidBottomY;
-    
-    if (distance < minDistance) {
-      eyelidTopY = 0;
-      eyelidBottomY = 0;
-    } else if (distance < maxDistance) {
-      var ratio = 1 - (distance - minDistance) / (maxDistance - minDistance); // Pourcentage de fermeture des paupières
-      eyelidTopY = -55 + ratio * 55;
-      eyelidBottomY = 55 - ratio * 55;
-    } else {
-      eyelidTopY = -55;
-      eyelidBottomY = 55;
-    }
-
-    $('.landing_eyeContain_eyeBox_paupieres-top').css({
-      transform: 'translateY(' + eyelidTopY + 'px)'
-    });
-    $('.landing_eyeContain_eyeBox_paupieres-bottom').css({
-      transform: 'translateY(' + eyelidBottomY + 'px)'
-    });
-    // Fin du nouveau code
-
-    $('.landing_eyeContain_eyeBox_paupieres-iris-pupille').css({
-      transform: 'translate(' + pupilX + 'px,' + pupilY + 'px)'
-    });
-  });
-});
 
 
 $(document).ready(function() {

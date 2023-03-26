@@ -139,7 +139,7 @@ export const projets = [
       mockup: './assets/mockups/mockup_perso_01.png',
     description: `Le projet consiste à concevoir l'UI-UX Design d'une application de calculatrice personnalisable.`,
       outils: 'Procreate',
-      view: './assets/torn_posters.svg',
+      view: './assets/torn_posters.png',
       palette: {
         
       } },
