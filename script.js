@@ -387,7 +387,7 @@ $(window).on('scroll', function () {
     $(".arrowScroll").on('click', function(){
       $(window).scrollTop(0);
     })
-    console.log('work')
+
   } else {
     $(".arrowScroll").css("transform", "rotate(0deg)");
     $(".arrowScroll").on('click', function(event){
