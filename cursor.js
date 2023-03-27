@@ -1,9 +1,6 @@
 var mouseXBlend = 0;
 var mouseYBlend = 0;
-const iris = $('.landing_eyeContain_eyeBox_paupieres-iris-pupille')
-var isCvButtonHovered = false;
-const paupTop = $('.landing_eyeContain_eyeBox_paupieres-top')
-const paupBottom = $('.landing_eyeContain_eyeBox_paupieres-bottom')
+
 $(document).on('mousemove', function(e) {
   mouseXBlend = e.pageX;
   mouseYBlend = e.pageY;

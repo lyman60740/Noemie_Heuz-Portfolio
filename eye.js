@@ -1,3 +1,7 @@
+const iris = $('.landing_eyeContain_eyeBox_paupieres-iris-pupille')
+var isCvButtonHovered = false;
+const paupTop = $('.landing_eyeContain_eyeBox_paupieres-top')
+const paupBottom = $('.landing_eyeContain_eyeBox_paupieres-bottom')
 $(document).ready(function() {
     var parentWidth = $('.landing_eyeContain_eyeBox_paupieres-iris').width();
     var parentHeight = $('.landing_eyeContain_eyeBox_paupieres-iris').height();
