@@ -398,28 +398,31 @@ $(window).on('scroll', function () {
 
   var scrollPos = $(window).scrollTop();
   var blocPos = $('.project_bloc').offset().top;
-  var blocHeight = $('.project_bloc').outerHeight();
+  
   var windowHeight = $(window).height();
   var centerPos = scrollPos + (windowHeight / 2);
   var blocLeftHeight = $('.project_bloc_left').outerHeight();
-  var blocLeftOffset = $('.project_bloc_left').offset().top;
+
   var centerOffset = centerPos - blocPos;
   var newTranslateY = '0';
 
   var blocRightPos = $('.project_bloc_right').offset().top;
-  var blocRightHeight = $('.project_bloc_right').outerHeight();
+ 
   var topLimit = blocRightPos - blocLeftHeight / 2;
   var blocLineBottom = $('.project_bloc_right_blocLine').offset().top + $('.project_bloc_right_blocLine').outerHeight();
   var bottomLimit = (blocLineBottom - windowHeight + blocLeftHeight / 2);
 
+  
+  var projectBlocHeight = $('.project_bloc_right_blocLine').outerHeight();
+
   if (scrollPos >= topLimit && scrollPos <= bottomLimit) {
     if (blocLeftHeight <= windowHeight) {
-      newTranslateY = (centerOffset - blocLeftHeight / 2) + 'px';
+      newTranslateY = Math.min(centerOffset - blocLeftHeight / 2, projectBlocHeight - blocLeftHeight - 10) + 'px';
     } else {
-      newTranslateY = ((windowHeight - blocLeftHeight) / 2) + 'px';
+      newTranslateY = Math.min((windowHeight - blocLeftHeight) / 2, projectBlocHeight - blocLeftHeight - 10) + 'px';
     }
-  } else if (scrollPos > bottomLimit) { // Add this condition to handle the case when the scroll position goes beyond the bottom limit
-    newTranslateY = (bottomLimit - topLimit)*1.28 + 'px';
+  } else if (scrollPos > bottomLimit) {
+    newTranslateY = Math.min((bottomLimit - topLimit) * 1.28, projectBlocHeight - blocLeftHeight - 10) + 'px';
   }
 
   $('.project_bloc_left').css('transform', 'translateY(' + newTranslateY + ')');

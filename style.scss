@@ -479,6 +479,7 @@ article {
     &_bloc {
         display: flex;
         justify-content: space-between;
+      
         &_left {
             height: max-content;
             transition: transform 500ms ease-in-out;
@@ -908,6 +909,7 @@ footer {
    .container {
     padding: 0 7vw;
    }
+   
   }
   @media  (max-width: 1700px) {
     .container {
@@ -916,8 +918,16 @@ footer {
        header {
         width: 81%;
        }
+       .mockupBox-developpeur{
+        scale: 0.8;
+        transform: translateX(-140px);
+       }
   }
   @media  (max-width: 1400px) {
+    .selection-developpeur img {
+        width: 40vw !important;
+       
+    }
     .container {
         padding: 0 5vw;
        }
@@ -940,8 +950,37 @@ footer {
         & img {
             width: 30px;
         }
+        & span {
+            font-size: 1.55vw;
+        }
        }
-       .bloc_right_line img {
+       .projet_bloc_right_line_img {
         max-width: 17vw;
        }
+       .project_presentation {
+        scale: 0.85;
+       }
+       .about h1 {
+        margin-bottom: 52px !important;
+       }
+       .project_bloc_right .contactButton {
+        margin-top: 70px;
+       }
+       footer {
+        margin-top: 100px !important;
+    }
+  }
+  @media  (max-width: 1200px) {
+    .selection-paiement img {
+        width: 20vw !important;
+        
+    }
+    .link_contact div {
+        width: 100px;
+    }
+  }
+  @media  (max-height: 750px) {
+    .landing_eyeContain {
+        scale: 0.7;
+    }
   }
