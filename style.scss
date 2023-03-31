@@ -994,6 +994,12 @@ footer {
     header nav, .project_bloc_left {
         display: none;
     }
+    header {
+        width: 89vw;
+        transform: translateX(-25px);
+        padding: 16px 24px 20px 24px;
+        height: initial;
+    }
     .nav-mobile {
         display: flex;
         flex-direction: column;
@@ -1135,9 +1141,51 @@ footer {
         background: transparent !important;
     }
     .contact {
+        width: 101vw;
+        transform: translateX(48px);
         background: linear-gradient(195deg, #988BE3 27.46%, #EE5622 74.66%);
+        color: black;
         &_bloc_right {
             width: 100%;
+            & form input {
+                border-bottom: 1px solid black;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            & textarea {
+                border-bottom: 1px solid black;
+            }
+            & .contactButton_largeCircle {
+                display: none;
+            }
+        }
+        & h2 {
+            padding: 56px 48px 0 24px;
+            font-weight: 700;
+        }
+        &_bloc {
+            padding: 0px 48px 64px 24px;
         }
     }
+    .flyButton {
+        background: black;
+        border-radius: 50%;
+        /* padding: 5px; */
+        width: 50px;
+        aspect-ratio: 1;
+        margin-top: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        transform: rotate(45deg);
+        & svg {
+            & path {
+                fill: #cb6b6f;
+            }
+            margin-bottom: -8px;
+            transform: translate(0px, 0px) rotate(-45deg);
+        }
+    }
+    
   }
