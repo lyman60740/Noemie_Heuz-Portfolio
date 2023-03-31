@@ -295,18 +295,27 @@ for (let i = 0; i < projets.length; i++) {
 
   // Ajouter une condition pour vérifier si l'id du projet est 'baiser'
   const mockup = projets[i].id === 'baiser' ? './assets/mockup_le_baiser2.png' : projets[i].mockup;
-  
+  if ($(window).width() < 600) {
   $('.project_bloc_right_blocLine').append(`
+    <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
+      <div><h2>${projets[i].titre}</h2><div class="custom-cursor  custom-cursor-mobile"><img src="./assets/arrow.svg" alt=""></div></div>
+      <span>${projets[i].type}</span>
+      <div></div>
+    </a>
+  `);
+  } else {
+    $('.project_bloc_right_blocLine').append(`
     <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
       <h2>${projets[i].titre}</h2>
       <span>${projets[i].type}</span>
       <div></div>
     </a>
   `);
+  }
 }
 
 
-
+if ($(window).width() > 600) {
 $('.project_bloc_right_line').on('mouseenter', function(){
   $('.custom-cursor').css({
     'opacity': '1',
@@ -378,7 +387,7 @@ $('.project_bloc_right_line').on('mouseleave', function(){
     })
   }
 });
-
+}
 $(document).ready(function() {
 $(window).on('scroll', function () {
 

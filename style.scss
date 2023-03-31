@@ -107,6 +107,7 @@ main {
     flex-direction: column;
     align-items: flex-end;
     padding-top: 17vh;
+    padding-left: 7px;
 }
 .container {
     
@@ -208,6 +209,7 @@ article {
                 height: 584px;
                 
                 &-top {
+                    background-position: top;
                     position: absolute;
                     top: 91px;
                     width: 100%;
@@ -876,7 +878,8 @@ footer {
 }
 #compteurUnites {
     filter: url("#blurFilter");
-}
+    margin-right: 10px;
+} 
 .svgFilter {
     display: none;
     width: 5px;
@@ -982,5 +985,131 @@ footer {
   @media  (max-height: 750px) {
     .landing_eyeContain {
         scale: 0.7;
+    }
+  }
+
+  // Mobile design
+
+  @media  (max-width: 576px) {
+    header nav, .project_bloc_left {
+        display: none;
+    }
+    .nav-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 11px;
+        cursor: pointer;
+        & div {
+            background: white;
+            width: 100%;
+            height: 1px;
+            &:nth-child(2) {
+                transform-origin: left;
+                transform: scaleX(0.6);
+            }
+            &:nth-child(3) {
+                transform-origin: right;
+                transform: scaleX(0.6);
+            }
+        }
+        
+    }
+    .markName img {
+        transform: translateY(0);
+        margin-right: 18px;
+    }
+    .landing {
+        flex-direction: column;
+    height: 84vh;
+    &_bloc {
+        width: initial;
+    }
+    }
+    .landing_eyeContain {
+        scale: 0.5;
+        width: initial;
+    position: absolute;
+    top: -47px;
+    }
+    h2 {
+        font-size: 24px !important;
+    }
+    h1 {
+        font-size: 40px !important;
+    }
+    h3 {
+        font-size: 16px !important;
+    }
+    .container {
+        padding: 0 48px 0px 24px
+    }
+    .bloc_cta {
+        margin-top: 40px;
+        margin-right: -23px;
+    }
+    .cvButton_largeCircle {
+        scale: 0.54;
+    }
+    .bloc_cta .cvButton_largeCircle {
+        transform: translateX(24px);
+    }
+    .cvButton_circleWhite, .cvButton span {
+        font-size: 32px;
+    }
+    .contactButton_largeCircle {
+        scale: 0.8;
+    }
+    .contactButton {
+        background: none;
+    }
+    .contactButton_bg {
+        background-image: url("./assets/lettrage-mobile.svg");
+        scale: 0.65;
+    }
+    footer {
+        display: none;
+    }
+    .about_bloc {
+        width: 100%;
+    }
+    .about_bloc_content_photo {
+        width: 100%;
+        height: 172px;
+        border-radius: 8px;
+    }
+    .arrowScroll {
+        bottom: 74px;
+        right: 20px;
+    }
+    .project_bloc_right {
+        width: 100%;
+    }
+    .custom-cursor-mobile {
+        transform: scale(1);
+        background: none !important;
+        opacity: 1;
+        width: 56px !important;
+        aspect-ratio: 1;
+        height: max-content !important;
+        right: 0;
+        position: initial;
+        & img {
+            width: 16px !important;
+            position: initial;
+            opacity: 1;
+        }
+    }
+    .project_bloc_right_line{
+        & span {
+            
+        }
+    & div:nth-child(1) {
+        height: max-content !important;
+        background: none !important;
+        display: flex;
+    justify-content: space-between;
+    }
     }
   }
