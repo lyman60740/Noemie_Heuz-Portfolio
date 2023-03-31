@@ -1035,6 +1035,7 @@ footer {
     }
     h2 {
         font-size: 24px !important;
+        transform: translate(0) !important;
     }
     h1 {
         font-size: 40px !important;
@@ -1095,15 +1096,21 @@ footer {
         height: max-content !important;
         right: 0;
         position: initial;
+        margin-top: 3px;
+        z-index: 99;
         & img {
             width: 16px !important;
             position: initial;
             opacity: 1;
+            
         }
     }
     .project_bloc_right_line{
         & span {
-            
+            margin-top: -5%;
+        }
+        & h2 {
+            max-width: 80%;
         }
     & div:nth-child(1) {
         height: max-content !important;
@@ -1111,5 +1118,26 @@ footer {
         display: flex;
     justify-content: space-between;
     }
+    }
+    .project_bloc_left_section {
+        margin-bottom: 48px;
+        & div {
+            margin-right: 16px;
+        }
+    }
+    .project_bloc_right_line:nth-child(5) {
+        margin-bottom: 32px;
+    }
+    .project_bloc_right_blocLine a:nth-child(6), .project_bloc_right_blocLine a:nth-child(8) {
+        margin-bottom: 80px !important;
+    }
+    textarea, input {
+        background: transparent !important;
+    }
+    .contact {
+        background: linear-gradient(195deg, #988BE3 27.46%, #EE5622 74.66%);
+        &_bloc_right {
+            width: 100%;
+        }
     }
   }

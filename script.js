@@ -303,6 +303,7 @@ for (let i = 0; i < projets.length; i++) {
       <div></div>
     </a>
   `);
+  
   } else {
     $('.project_bloc_right_blocLine').append(`
     <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
@@ -313,6 +314,25 @@ for (let i = 0; i < projets.length; i++) {
   `);
   }
 }
+
+  $(`
+  <div class="project_bloc_left_section">
+    <div></div>
+    <h3 class="uxuiCategorie" >UI - UX Design</h3>
+  </div>
+  `).insertBefore('.project_bloc_right_blocLine a:nth-child(1)');
+  $(`
+  <div class="project_bloc_left_section">
+    <div></div>
+    <h3 class="uxuiCategorie" >Illustration 3D</h3>
+  </div>
+  `).insertBefore('.project_bloc_right_blocLine a:nth-child(7)');
+  $(`
+  <div class="project_bloc_left_section">
+    <div></div>
+    <h3 class="uxuiCategorie" >Illustration</h3>
+  </div>
+  `).insertBefore('.project_bloc_right_blocLine a:nth-child(9)');
 
 
 if ($(window).width() > 600) {
@@ -366,6 +386,7 @@ $('.project_bloc_right_line').on('mouseleave', function(){
   var categorie = $(this).attr('data-cat')
   // Vérifier si la catégorie est "uxui" et supprimer la classe blue en conséquence
   if (categorie === 'uxui') {
+    
     $('.uxuiCategorie').removeClass('blue');
     $('.uxuiCategorie').prev().css({
       'transform': 'scaleX(1)',
