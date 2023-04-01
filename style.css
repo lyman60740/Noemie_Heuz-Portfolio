@@ -417,6 +417,7 @@ article {
   bottom: 33px;
   right: 44px;
   opacity: 0;
+  z-index: 101;
   cursor: pointer;
   animation: preload-opacity 3000ms 7000ms forwards cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -958,10 +959,11 @@ footer > .markName {
   }
   .landing {
     flex-direction: column;
-    height: 84vh;
+    height: 100%;
   }
   .landing_bloc {
     width: initial;
+    margin-top: 320px;
   }
   .landing_eyeContain {
     scale: 0.5;
@@ -1072,6 +1074,7 @@ footer > .markName {
     transform: translateX(48px);
     background: linear-gradient(195deg, #988BE3 27.46%, #EE5622 74.66%);
     color: black;
+    margin-bottom: 0;
   }
   .contact_bloc_right {
     width: 100%;
@@ -1091,7 +1094,7 @@ footer > .markName {
     font-weight: 700;
   }
   .contact_bloc {
-    padding: 0px 48px 64px 24px;
+    padding: 0px 48px 24px 24px;
   }
   .flyButton {
     background: black;
@@ -1113,6 +1116,100 @@ footer > .markName {
   }
   .flyButton svg path {
     fill: #cb6b6f;
+  }
+  .contact_bloc_right_link_mail {
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+  }
+  .contact_bloc_right_link_mail span {
+    white-space: nowrap;
+    margin-right: 0px;
+  }
+  .contact_bloc_right_link_mail a {
+    color: black;
+    border-bottom: 1px solid black;
+  }
+  .contact_bloc_right_link_reseaux {
+    display: none;
+  }
+  .contact_bloc_right_link_reseaux_mobile {
+    display: flex;
+    justify-content: flex-end;
+    height: max-content;
+  }
+  .contact_bloc_right_link_reseaux_mobile a {
+    margin-left: 13px;
+    width: 56px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .contactButtonBox {
+    display: flex;
+    justify-content: space-between;
+  }
+  .contactButtonBox .cvButton_largeCircle {
+    transform: translate(-35px, -45px);
+  }
+  .custom-cursor {
+    display: none;
+  }
+  .credit-mobile {
+    margin-top: 150px;
+    padding-top: 24px;
+    border-top: 1px solid black;
+    font-size: 16px;
+  }
+  .credit-mobile h3 {
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .credit-mobile a {
+    color: black;
+    border-bottom: 1px solid black !important;
+  }
+  .about_bloc_content {
+    width: 100% !important;
+    margin-bottom: 60px !important;
+  }
+  .about h1 {
+    margin-bottom: 104px !important;
+  }
+  .palette {
+    margin-bottom: 200px;
+    flex-direction: column;
+  }
+  .palette div {
+    margin-left: 0;
+    margin-top: -82px;
+    scale: 0.6;
+  }
+  .presentation-landing {
+    scale: 0.35;
+  }
+  .project_bloc_right .contactButton {
+    transform: translateX(35px);
+    margin-top: 46px;
+  }
+  .credit-project {
+    border-top: 1px solid white !important;
+    margin-bottom: 24px;
+  }
+  .credit-project a {
+    color: white !important;
+  }
+  .halo-calc {
+    transform: translate(-39px, -12px) !important;
+    scale: 0.7;
+  }
+  .mockupBox-calculatrice {
+    transform: translate(0px, 0) scale(0.85) !important;
   }
 }
 
