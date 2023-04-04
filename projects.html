@@ -4,12 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="./projects.css">
     <title>Noémie - UX/UI Designer</title>
     <link rel="icon" href="./assets/cercle-head.png" type="image/png" sizes="16x16">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
 </head>
 <body>
+    <div class="nav-mobile-screen">
+        <div class="container-navMobile">
+            <div class="screen_top">
+                <a href="#about" class="screen_top_about" >À propos</a>
+                <a href="#projets" class="screen_top_projets">Projets</a>
+                <a href="#contact" class="screen_top_contact">
+                    <span>Contact</span>
+                    <img src="./assets/arrow.svg" alt="">
+                </a>
+            </div>
+            <div class="screen_bot">
+                <div class="contactButtonBox">
+                    <a class="cvButton_largeCircle" href="/assets/cercle.svg" download style="justify-self: flex-end">
+                        <button class="cvButton">
+                            <div class="cvButton_circleWhite"></div>
+                            <span>CV</span>
+                            <div class="cvButton_arrowBox">
+                                <img src="./assets/arrow_black.png" alt="Arrow" class="arrowCv">
+                                <img src="./assets/validate.svg" alt="" class="validate">
+                                <div></div>
+                            </div>
+                            
+                        </button>
+                    </a>
+                    <div class="contact_bloc_right_link_reseaux_mobile">
+                        <a href=""> <img src="./assets/icon_linkedin-white.svg" alt=""></a>
+                        <a href=""> <img src="./assets/icon_dribbble-white.svg" alt=""></a>
+                        <a href=""> <img src="./assets/icon_github-white.svg" alt=""></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+    </div>
     <div class="container">
         <header>
             <div class="markName">
@@ -18,13 +56,22 @@
             </div>
             <nav>
                 <span></span>
-                <a href="./index.html#about">À propos</a>
+                <a href="#about">À propos</a>
                 <a href="#projets">Projets</a>
                 <div>
-                    <a href="./index.html#contact" >Contact</a>
+                    <a href="#contact" >Contact</a>
                     <img src="./assets/arrow.svg" alt="Arrow">
                 </div>
             </nav>
+            <div class="nav-mobile">
+                <div class="burgerBox">
+                    <div class="nav-mobile-burgerLine1"></div>
+                <div class="nav-mobile-burgerLine2"></div>
+                <div class="nav-mobile-burgerLine3"></div>
+                </div>
+                
+            </div>
+            
         </header>
         <main>
             
@@ -150,6 +197,7 @@
     <script type="module" src="./script.js" ></script>
     <script type="module" src="./cursor.js" ></script>
     <script type="module" src="./projects.js"></script>
+    <script type="module" src="./mobile.js"></script>
     
 
 </body>

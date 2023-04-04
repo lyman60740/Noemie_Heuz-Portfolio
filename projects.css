@@ -112,14 +112,23 @@ h1 {
     border-left: 1px solid #F1EFE3;
     padding-left: 24px ;
 }
-.project_description_part {
+.project_description_part:not(:last-child) {
     margin: 0 0 56px 0;
 }
+.project_description_part span{
+    padding: 4px 16px;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+.project_description_part *:not(:first-child) {
+    margin-left: 16px;
+  }
 .project_description_part p:nth-child(2) {
     margin: 24px 0 0 0;
 }
 .project_description_part p:nth-child(1) {
     font-weight: 600;
+    margin: 0;
 }
 .project_presentation {
     width: 100%;
@@ -157,6 +166,9 @@ h1 {
     width: 1200px;
     height: 800px;
     transform: translate(0px, -95px);
+}
+.selection-landing {
+    margin: 116px 0;
 }
 .selection-developpeur {
     width: 100%;
@@ -197,6 +209,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .palette-developpeur div span{
@@ -537,4 +550,47 @@ footer {
   .disabled-project div {
     opacity: 0.5;
     background: #988BE3;
+  }
+  @media  (max-width: 576px) {
+.landing-github {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border: 1px solid white;
+
+}
+.landing-github img{
+    width: 24px;
+    height: 24px;
+    
+}
+.circleDisabled {
+    width: 24px !important;
+    aspect-ratio: 1;
+    background: #988BE3 !important;
+    border-radius: 50% !important;
+}
+.presentation-baiser {
+    width: 100%;
+    scale: 1;
+    margin-top: 200px;
+    margin-bottom: 0;
+}
+.presentation-baiser img {
+    width: 100%;
+    
+}
+.presentation-perso {
+    scale: 1 !important;
+    display: flex;
+    margin-top: 140px;
+}
+.presentation-perso img {
+    width: 100%;
+    margin-bottom: 0px;
+}
   }

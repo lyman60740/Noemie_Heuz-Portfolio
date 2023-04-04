@@ -992,36 +992,94 @@ footer {
   // Mobile design
 
   @media  (max-width: 576px) {
+    main {
+        padding-top: 13vh;
+    }
     header nav, .project_bloc_left {
         display: none;
     }
     header {
         width: 89vw;
+        z-index: 103;
         transform: translateX(-25px);
         padding: 16px 24px 20px 24px;
         height: initial;
     }
-    .nav-mobile {
+    .burgerBox {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 24px;
         height: 11px;
         cursor: pointer;
-        & div {
-            background: white;
-            width: 100%;
-            height: 1px;
-            &:nth-child(2) {
-                transform-origin: left;
-                transform: scaleX(0.6);
-            }
-            &:nth-child(3) {
-                transform-origin: right;
-                transform: scaleX(0.6);
+        overflow: hidden;
+        
+        
+    }
+    .burgerBox div {
+        background: white;
+        width: 100%;
+        height: 1px;
+        transform-origin: left;
+        
+    }
+    .nav-mobile {
+        display: initial !important;
+    &-burgerLine2 {
+        transform-origin: left;
+        transform: translateX(-40%);
+    }
+    &-burgerLine3  {
+        transform-origin: right;
+        transform: translateX(40%);
+    }
+    &-screen {
+        display: initial !important;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background: black;
+        z-index: 102;
+        overflow: hidden;
+        transform: translateX(100vh);
+    }
+   
+    }
+    .container-navMobile {
+        padding: 113px 48px 23px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 88%;
+    }
+    .screen_top {
+        border-left: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        & a {
+            font-size: 24px;
+            margin-bottom: 24px;
+            margin-left: 24px;
+            &:last-child {
+                margin-bottom: 0 !important;
             }
         }
+        &_contact {
+            display: flex;
+            justify-content: space-between;
+        }
         
+    }
+    .screen_bot {
+        font-size: 16px;
+        margin-bottom: 25px;
+        
+    }
+    .screen_bot >.contactButtonBox {
+       
+        & >.contact_bloc_right_link_reseaux_mobile a {
+            border: 1px solid white;
+        }
     }
     .markName img {
         transform: translateY(0);
@@ -1046,7 +1104,7 @@ footer {
         transform: translate(0) !important;
     }
     h1 {
-        font-size: 40px !important;
+        font-size: 10.2vw !important;
     }
     h3 {
         font-size: 16px !important;
@@ -1061,6 +1119,9 @@ footer {
     .cvButton_largeCircle {
         scale: 0.54;
     }
+    .cvButton {
+        scale: 1 !important;
+    } 
     .bloc_cta .cvButton_largeCircle {
         transform: translateX(24px);
     }
@@ -1096,6 +1157,7 @@ footer {
         width: 100%;
     }
     .custom-cursor-mobile {
+        display: flex !important;
         transform: scale(1);
         background: none !important;
         opacity: 1;
@@ -1118,7 +1180,7 @@ footer {
             margin-top: -5%;
         }
         & h2 {
-            max-width: 80%;
+            max-width: 75%;
         }
     & div:nth-child(1) {
         height: max-content !important;
@@ -1139,6 +1201,7 @@ footer {
     .project_bloc_right_blocLine a:nth-child(6), .project_bloc_right_blocLine a:nth-child(8) {
         margin-bottom: 80px !important;
     }
+   
     textarea, input {
         background: transparent !important;
     }
@@ -1253,24 +1316,26 @@ footer {
 
     .about_bloc_content {
     width: 100% !important;
-    margin-bottom: 60px !important;
+    margin-bottom: 0px !important;
     }
     .about {
+        margin-bottom: 200px !important;
         & h1 {
             margin-bottom: 104px !important;
         }
     }
     .palette {
-        margin-bottom: 200px;
+        height: initial !important;
         flex-direction: column;
+        margin-top: 87px;
         & div {
-            margin-left: 0;
+            margin-left: 0 !important;
             margin-top: -82px;
             scale: 0.6;
         }
     }
     .presentation-landing {
-        scale: 0.35;
+        scale: 0.31;
     }
     .project_bloc_right .contactButton {
         transform: translateX(35px);
@@ -1287,7 +1352,86 @@ footer {
         transform: translate(-39px, -12px) !important;
         scale: 0.7;
     }
-    .mockupBox-calculatrice {
-         transform: translate(0px, 0) scale(0.85) !important; 
+    .mockupBox {
+        &-connexion {
+            scale: 0.7;
+        }
+        &-calculatrice {
+            transform: translate(0px, 0) scale(0.85) !important; 
+       }
     }
+    .presentation-calculatrice {
+        overflow-x: hidden;
+        margin-bottom: -10vh;
+        margin-top: 5vh;
+    }
+    .presentation-connexion {
+        margin-top: 20vh;
+        & video {
+            transform: translateX(-10px);
+            width: 56vw !important;
+        }
+    }
+    .project_presentation {
+        scale: 0.60;
+    }
+    .carrousel {
+        margin: 72px 0;
+        position: relative;
+        overflow: hidden;
+       display: flex;
+       width: 100%;
+       justify-content: space-between;
+       
+       &-box {
+        min-height: 650px;
+        width: 100%;
+        display: flex;
+    justify-content: center;
+    z-index: -1;
+       }
+    }
+    .arrowCarrousel-right, .arrowCarrousel-left{
+        width: 16px;
+        padding: 10px;
+    }
+    .arrowCarrousel-right {
+        transform: rotate(180deg);
+    }
+    .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .slide img {
+        width: 185px;
+    }
+    .mockupBox-paiement {
+        transform: scale(0.55) !important;
+        margin-right: -53px !important;
+        margin-top: -8vh !important;
+        margin-bottom: -116px;
+    }
+    .mockupBox-developpeur {
+        scale: 0.7;
+        transform: translateX(-64px);
+        margin-top: -11vh;
+    }
+    .mockupBox-developpeur div {
+        width: 397px !important;
+        transform: matrix(0.92, 0.58, -0.25, 0.97, 0, 0) translate(74px, 181px) !important;
+    }
+    .mockupBox-developpeur div::before {
+        width: 397px !important;
+        transform: translate(-4px, -37px) !important;
+    }
+    .mockupBox-baiser {
+        width: 220px !important;
+        height: 300px !important;
+    }
+
   }
+  

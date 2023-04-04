@@ -5,71 +5,131 @@ const titre = urlParams.get('titre');
 
 // Trouver le projet correspondant au titre
 const projet = projets.find((p) => p.titre === titre);
-
-
-
-    $('main').prepend(`
-    <article class="about">
-              <div class="about-catBox">
-              <div class="about-catBox-tiret"></div>
-              <h3 data-cat=${projet.categorie}></h3>
-              </div>
-                
-                <h1 id="about">${projet.titre}</h1>
-                <div class="about_bloc">
-                    <section class="about_bloc_content">
-                    <div class="mockupBox-${projet.id}">
-                            <img src="${projet.mockup}" alt="">
-                    </div>
-                        <div class="project_description_bloc">
-                            <div class="project_description_part">
-                                <p>Type</p>
-                                <p>${projet.type}</p>
-                            </div>
-                            <div class="project_description_part">
-                                <p>Descriptif</p>
-                                <p>${projet.description}</p>
-                            </div>
-                            <div class="project_description_part">
-                                <p>Outils</p>
-                                <p>${projet.outils}</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="project_presentation presentation-${projet.id}">
-                    <video width="1200" height="auto" loop autoplay muted>
-                      <source src="${projet.video}" type="video/mp4" >
-                      Votre navigateur ne prend pas en charge la vidéo HTML5.
-                    </video>
-                    </div>
-                    
-                    <section class="palette palette-${projet.id}">
-                       
-                    </section>
-                </div>
-            </article>
-
-            `)
-
+const carrouselSlides = projet.carrousel
+  .map((imgSrc) => `<div class="slide"><img src="${imgSrc}" alt=""></div>`)
+  .join('');
+  const outilsSpans = projet.outils
+  .map((outil) => `<span>${outil}</span>`)
+  .join('');
 
 
 $(document).ready(function () {
-  var cat = $(".about h3").attr("data-cat");
+  $('main').prepend(`
+  <article class="about">
+            <div class="about-catBox">
+            <div class="about-catBox-tiret"></div>
+            <h3 data-cat=${projet.categorie}></h3>
+            </div>
+              
+              <h1 id="about">${projet.titre}</h1>
+              <div class="about_bloc">
+                  <section class="about_bloc_content">
+                  <div class="mockupBox-${projet.id}">
+                          <img src="${projet.mockup}" alt="">
+                  </div>
+                      <div class="project_description_bloc">
+                          <div class="project_description_part">
+                              <p>Type</p>
+                              <p>${projet.type}</p>
+                          </div>
+                          <div class="project_description_part">
+                              <p>Descriptif</p>
+                              <p>${projet.description}</p>
+                          </div>
+                          <div class="project_description_part">
+                              <p>Outils</p>
+                              <p>${outilsSpans}</p>
+                          </div>
+                      </div>
+                  </section>
 
-  if (cat === "uxui") {
-    $(".about h3").text("UI - UX Design");
-  } else if (cat === "illustration") {
-    $(".about h3").text("Illustration");
+                  <div class="project_presentation presentation-${projet.id}">
+                  <video width="1200" height="auto" loop autoplay muted>
+                    <source src="${projet.video}" type="video/mp4" >
+                    Votre navigateur ne prend pas en charge la vidéo HTML5.
+                  </video>
+                  </div>
+                  
+                  <div class="carrousel">
+                  <img src="./assets/arrowCarrousel.svg" class="arrowCarrousel-left" >
+                  <div class="carrousel-box">
+                    ${carrouselSlides}
+                  </div>
+                  <img src="./assets/arrowCarrousel.svg"  class="arrowCarrousel-right">
+                  </div>
+
+                  <section class="palette palette-${projet.id}">
+                     
+                  </section>
+              </div>
+          </article>
+
+          `)
+          addCarrousel();
+
+if ($.trim($('.carrousel-box').html())) {
+  const carrousel = $(".carrousel");
+  const slides = carrousel.find(".slide");
+  const numSlides = slides.length;
+  let currentSlide = 0;
+  const duration = 1;
+  const hammer = new Hammer(carrousel[0]);
+  
+  gsap.set(slides, { autoAlpha: 0 });
+  gsap.to(slides[currentSlide], { 
+    autoAlpha: 1, 
+    duration: duration ,
+    ease: "elastic.out(1, 0.9)"
+  });
+  
+  function changeSlide(direction) {
+    const currentSlideElement = slides[currentSlide];
+    if (direction === "next") {
+      currentSlide = (currentSlide + 1) % numSlides;
+    } else {
+      currentSlide = (currentSlide - 1 + numSlides) % numSlides;
+    }
+    const nextSlideElement = slides[currentSlide];
+    const slideDirection = direction === "next" ? "-100%" : "100%";
+  
+    gsap.to(currentSlideElement, {
+      x: slideDirection,
+      autoAlpha: 0,
+      duration: duration,
+      onComplete: () => {
+        gsap.set(currentSlideElement, { x: "0%" });
+      },
+      ease: "elastic.out(1, 0.9)"
+    });
+  
+    gsap.fromTo(
+      nextSlideElement,
+      { x: slideDirection === "-100%" ? "100%" : "-100%", autoAlpha: 0 },
+      { x: "0%", autoAlpha: 1,
+       duration: duration,
+      ease: "elastic.out(1, 0.9)" }
+    );
   }
-});
+  hammer.on('swipeleft', () => {
+    changeSlide('next');
+  });
+  hammer.on('swiperight', () => {
+    changeSlide('previous');
+  });
+  $('body').on('click', '.arrowCarrousel-left', function() {
+    changeSlide('previous');
+  });
+  
+  $('body').on('click', '.arrowCarrousel-right', function() {
+    changeSlide('next');
+  });
+}
 
-$('.mockupBox-paiement').prepend(`
-  <div class="kagebunshin-no-jutsu"></div>
-  <div class="kagebunshin-no-jutsu"></div>
-  <div class="kagebunshin-no-jutsu"></div>
-  <div class="kagebunshin-no-jutsu"></div>
-`)
+
+
+
+// Appelez la fonction addCarrousel pour ajouter le carrousel et effectuer la vérification
+
 
 const paletteSection = $('.palette');
 paletteSection.empty();
@@ -131,6 +191,23 @@ for (let i = 1; i <= paletteLength; i++) {
   }
 }
 
+
+  var cat = $(".about h3").attr("data-cat");
+
+  if (cat === "uxui") {
+    $(".about h3").text("UI - UX Design");
+  } else if (cat === "illustration") {
+    $(".about h3").text("Illustration");
+  }
+
+  $('.mockupBox-paiement').prepend(`
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+  <div class="kagebunshin-no-jutsu"></div>
+`)
+
+
 // Animation mockup calculette
 $(".mockupBox-calculatrice").prepend(`
   <div class="halo-calc">
@@ -143,22 +220,11 @@ $(".mockupBox-calculatrice").prepend(`
   </div>
 `)
 
-$('.presentation-paiement').after(`
-<section class="selection-paiement">
-  <div>
-  <img src="./assets/maquette_paiement1.png" alt="">
-  <img src="./assets/maquette_ajouter_une_carte-bancaire.png" alt="">
-  <img src="./assets/maquette_verifier_ma_commande.png" alt="">
-  <img src="./assets/maquette_verification.png" alt="">
-  </div>
-</section>
 
-`);
-$('.presentation-developpeur').after(`
-<section class="selection-developpeur">
+$('.presentation-landing').after(`
+<section class="selection-landing">
   <div>
-  <img src="./assets/maquette_portfolio_developer_web_light.png" alt="">
-  <img src="./assets/maquette_portfolio_developer_web_dark.png" alt="">
+  <img src="./assets/maquette_landing_page.png" alt="">
   </div>
 </section>
 
@@ -172,12 +238,21 @@ $('.presentation-baiser,.presentation-perso').html(`
 `);
 
 $('.palette-baiser, .palette-perso').remove();
-$(document).ready(function() {
+
+
+function addCarrousel() {
+  if (!$.trim($('.carrousel-box').html())) {
+    $('.carrousel').remove();
+  }
+  
+}
+
+
   $('.presentation-baiser img').on('load', function() {
     $('.presentation-baiser-loader').hide();
     $('.presentation-baiser img').show();
   });
-});
+
 
 
 function getTransformValuesFromMatrix(matrix) {
@@ -265,7 +340,17 @@ $('.presentation-landing').on("mousemove", function (e) {
 $('.presentation-landing').click(function() {
   window.location.href = '#';
 });
-
+$(`
+<div class="landing-github"> 
+<img src="./assets/icon_github-white.svg" alt="">
+</div>
+`).insertBefore('.palette-landing');
+var presentationLanding = $('.presentation-landing');
+if (presentationLanding.length) {
+  var presentationLandingOffset = presentationLanding.offset().top;
+  var presentationLandingHeight = presentationLanding.height();
+  $('.landing-github').css('top', 'min(' + (presentationLandingOffset + presentationLandingHeight * 0.75) + 'px, ' + (presentationLandingOffset + presentationLandingHeight - 150) + 'px)');
+}
 
 //Anim flowers
 
@@ -300,7 +385,7 @@ $(".mockupBox-developpeur").mouseenter(function(){
   
 })
 
-
+});
 // $(document).ready(function() {
 //   $('.palette div').each(function() {
 //     if (rgb2hex($(this).css('background-color')) == '#000000') {

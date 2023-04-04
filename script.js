@@ -303,18 +303,6 @@ for (let i = 0; i < projets.length; i++) {
       <div></div>
     </a>
   `);
-  
-  } else {
-    $('.project_bloc_right_blocLine').append(`
-    <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
-      <h2>${projets[i].titre}</h2>
-      <span>${projets[i].type}</span>
-      <div></div>
-    </a>
-  `);
-  }
-}
-
   $(`
   <div class="project_bloc_left_section">
     <div></div>
@@ -333,6 +321,18 @@ for (let i = 0; i < projets.length; i++) {
     <h3 class="uxuiCategorie" >Illustration</h3>
   </div>
   `).insertBefore('.project_bloc_right_blocLine a:nth-child(9)');
+  $('.disabled-project .custom-cursor-mobile').html('<p class="circleDisabled"></p>');
+  } else {
+    $('.project_bloc_right_blocLine').append(`
+    <a href="./projects.html?titre=${encodeURIComponent(projets[i].titre)}" class="project_bloc_right_line ${disabledClass} " data=${mockup} data-cat=${projets[i].categorie}>
+      <h2>${projets[i].titre}</h2>
+      <span>${projets[i].type}</span>
+      <div></div>
+    </a>
+  `);
+  }
+}
+
 
 
 if ($(window).width() > 600) {
