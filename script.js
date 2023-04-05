@@ -303,6 +303,7 @@ for (let i = 0; i < projets.length; i++) {
       <div></div>
     </a>
   `);
+  
   $(`
   <div class="project_bloc_left_section">
     <div></div>

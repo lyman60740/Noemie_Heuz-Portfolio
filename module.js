@@ -41,9 +41,9 @@ export const projets = [
         carac6: 'Heebo',
       },
       carrousel: [
-        './assets/carroussel/maquette_calculatrice_pink.png',
-        './assets/carroussel/maquette_calculatrice_purple.png',
-        './assets/carroussel/maquette_calculatrice_cyan.png',
+        './assets/maquette_calculatrice_pink.svg',
+        './assets/maquette_calculatrice_purple.svg',
+        './assets/maquette_calculatrice_cyan.svg',
       ],
       fontFamily: "'Heebo', sans-serif;"
     },
@@ -68,9 +68,9 @@ export const projets = [
         carac8: 'Visuels',
       },
       carrousel: [
-        './assets/carroussel/maquette_page_de_connexion_home.png',
-        './assets/carroussel/maquette_page_de_connexion_login.png',
-        './assets/carroussel/maquette_page_de_connexion_sign_up.png',
+        './assets/carroussel/maquette_page_de_connexion_home.svg',
+        './assets/carroussel/maquette_page_de_connexion_login.svg',
+        './assets/carroussel/maquette_page_de_connexion_sign_up.svg',
       ],
       fontFamily: "'Syne', sans-serif;" },
     {

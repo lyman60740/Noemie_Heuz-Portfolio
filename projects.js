@@ -5,6 +5,7 @@ const titre = urlParams.get('titre');
 
 // Trouver le projet correspondant au titre
 const projet = projets.find((p) => p.titre === titre);
+var images = projet.carrousel;
 const carrouselSlides = projet.carrousel
   .map((imgSrc) => `<div class="slide"><img src="${imgSrc}" alt=""></div>`)
   .join('');
@@ -50,13 +51,6 @@ $(document).ready(function () {
                   </video>
                   </div>
                   
-                  <div class="carrousel">
-                  <img src="./assets/arrowCarrousel.svg" class="arrowCarrousel-left" >
-                  <div class="carrousel-box">
-                    ${carrouselSlides}
-                  </div>
-                  <img src="./assets/arrowCarrousel.svg"  class="arrowCarrousel-right">
-                  </div>
 
                   <section class="palette palette-${projet.id}">
                      
@@ -65,6 +59,38 @@ $(document).ready(function () {
           </article>
 
           `)
+          if ($(window).width() < 600) {
+            
+            $(`
+            <div class="carrousel">
+                            <img src="./assets/arrowCarrousel.svg" class="arrowCarrousel-left" >
+                            <div class="carrousel-box">
+                              ${carrouselSlides}
+                            </div>
+                            <img src="./assets/arrowCarrousel.svg"  class="arrowCarrousel-right">
+                            </div>
+            `).insertAfter('.presentation-paiement, .presentation-calculatrice, .presentation-connexion, .presentation-developpeur' );
+
+          } 
+          else {
+            $(`
+            <div class="images images-${projet.id}">
+                            
+               <div class="images-box">
+               
+              </div>
+                      
+              </div>
+            `).insertAfter('.presentation-paiement, .presentation-calculatrice, .presentation-connexion, .presentation-developpeur ');
+
+            $.each(images, function(index, value) {
+ 
+              $('.images-box').append(`
+              <img src="${value}" >
+              `);
+            });
+            
+          }
           addCarrousel();
 
 if ($.trim($('.carrousel-box').html())) {
@@ -224,7 +250,7 @@ $(".mockupBox-calculatrice").prepend(`
 $('.presentation-landing').after(`
 <section class="selection-landing">
   <div>
-  <img src="./assets/maquette_landing_page.png" alt="">
+  <img src="./assets/maquette_landing_page.svg" alt="">
   </div>
 </section>
 
@@ -340,11 +366,13 @@ $('.presentation-landing').on("mousemove", function (e) {
 $('.presentation-landing').click(function() {
   window.location.href = '#';
 });
+if ($(window).width() < 600) {
 $(`
 <div class="landing-github"> 
 <img src="./assets/icon_github-white.svg" alt="">
 </div>
 `).insertBefore('.palette-landing');
+}
 var presentationLanding = $('.presentation-landing');
 if (presentationLanding.length) {
   var presentationLandingOffset = presentationLanding.offset().top;

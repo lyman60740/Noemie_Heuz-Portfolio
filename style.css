@@ -548,6 +548,32 @@ article {
   pointer-events: none;
 }
 
+.images {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  align-self: center;
+  max-width: 70vw;
+  margin-top: 41vh;
+  margin-bottom: 10vh;
+  height: 100%;
+}
+.images img {
+  width: 15vw;
+}
+.images-landing {
+  margin-top: 300px;
+  height: 100vh;
+}
+
+.images-box {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .blue {
   color: #988BE3;
   transform: scale(1.1);
@@ -792,7 +818,7 @@ footer > .markName {
   border: 1px solid #988BE3;
   background-color: transparent; /* Vous pouvez changer la couleur du cercle ici */
   pointer-events: none; /* Important pour permettre les interactions avec les éléments sous-jacents */
-  z-index: 100;
+  z-index: 98;
   opacity: 0;
   transition: opacity 500ms ease, transform 500ms ease;
   display: flex;
@@ -810,6 +836,44 @@ footer > .markName {
   margin-top: 10px;
   width: 15px;
   aspect-ratio: 1;
+}
+
+.carrousel {
+  margin: 72px 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.carrousel-box {
+  min-height: 650px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+}
+
+.arrowCarrousel-right, .arrowCarrousel-left {
+  width: 16px;
+  padding: 10px;
+}
+
+.arrowCarrousel-right {
+  transform: rotate(180deg);
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 185px;
 }
 
 .compteurBox {
@@ -1249,7 +1313,10 @@ footer > .markName {
     scale: 0.6;
   }
   .presentation-landing {
-    scale: 0.31;
+    scale: 0.31 !important;
+  }
+  .selection-landing {
+    margin: 50px 0 200px 0 !important;
   }
   .project_bloc_right .contactButton {
     transform: translateX(35px);

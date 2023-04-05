@@ -168,7 +168,10 @@ h1 {
     transform: translate(0px, -95px);
 }
 .selection-landing {
-    margin: 116px 0;
+    margin-top: 400px;
+}
+.selection-landing img {
+    width: 100%;
 }
 .selection-developpeur {
     width: 100%;
