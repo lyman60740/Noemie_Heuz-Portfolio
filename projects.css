@@ -142,7 +142,8 @@ h1 {
     width: 330px;
 }
 .presentation-perso img {
-    width: 50%;
+    width: auto;
+    max-height: 80vh;
     margin-bottom: 327px;
 }
 .presentation-paiement video {

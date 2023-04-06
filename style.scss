@@ -607,6 +607,15 @@ article {
     width: 100%;
     
 }
+.images-connexion div {
+    justify-content: space-around !important;
+}
+.images-developpeur {
+    justify-content: center !important;
+    & div img {
+        width: 33vw;
+    }
+}
 .blue {
     color: $blue;
     
