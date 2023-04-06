@@ -463,6 +463,7 @@ $(window).on('scroll', function () {
 
 
 
+
 $(document).ready(function() {
   var originalElement;
 
@@ -486,7 +487,79 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
 
+
+  
+  var lastScrollTop = 0;
+
+  function isElementEnteringViewport(el) {
+      if (!el) return false;
+      var rect = el.getBoundingClientRect();
+      return (
+          (rect.top >= 0 &&
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight)) ||
+          (rect.bottom >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+      );
+  }
+
+  function isElementLeavingViewport(el) {
+      if (!el) return false;
+      var rect = el.getBoundingClientRect();
+      return (
+          (rect.top < 0 && rect.bottom < 0) ||
+          (rect.top > (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.bottom > (window.innerHeight || document.documentElement.clientHeight))
+      );
+  }
+
+  function getInitialTranslateX(el) {
+      var transformMatrix = window.getComputedStyle(el).transform;
+      if (transformMatrix !== 'none') {
+          var matrixValues = transformMatrix.split('(')[1].split(')')[0].split(',');
+          return parseFloat(matrixValues[4]);
+      }
+      return 0;
+  }
+
+  function onScroll() {
+      var scrollTop = $(window).scrollTop();
+      var scrollDirection = scrollTop > lastScrollTop ? "down" : "up";
+      lastScrollTop = scrollTop;
+
+      // Sélectionner tous les éléments avec la classe .your-element-class
+      var targetElements = $('.project_description_bloc p');
+
+      targetElements.each(function() {
+          var element = $(this);
+          var tl = gsap.timeline();
+          if (isElementEnteringViewport(element[0])) {
+              // Animation d'apparition
+              tl.to(element, {
+                  duration: 1,
+                  x: 0,
+                  opacity: 1,
+                  ease: 'power1.out'
+              });
+          }
+
+          if (isElementLeavingViewport(element[0])) {
+              // Animation de disparition
+              tl.to(element, {
+                  duration: 1,
+                  x: -100,
+                  opacity: 0,
+                  ease: 'power1.in'
+              });
+          }
+          
+      });
+  }
+
+  // Ajouter l'événement de défilement
+  $(window).on('scroll', onScroll);
+});
 
 
 

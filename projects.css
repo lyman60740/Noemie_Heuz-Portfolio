@@ -111,7 +111,31 @@ h1 {
 .project_description_bloc {
     border-left: 1px solid #F1EFE3;
     padding-left: 24px ;
+    overflow: hidden;
+    padding-bottom: 5px;
 }
+.project_description_bloc p {
+    width: max-content;
+}
+.project_description_bloc p:nth-child(1) {
+    transform: translateX(-82px);
+}
+.project_description_bloc p:nth-child(2) {
+    transform: translateX(-132px);
+}
+.project_description_bloc p:nth-child(3) {
+    transform: translateX(-140px);
+}
+.project_description_bloc p:nth-child(4) {
+    transform: translateX(-662px);
+}
+.project_description_bloc p:nth-child(5) {
+    transform: translateX(-92px);
+}
+.project_description_bloc p:nth-child(6) {
+    transform: translateX(-155px);
+}
+
 .project_description_part:not(:last-child) {
     margin: 0 0 56px 0;
 }
