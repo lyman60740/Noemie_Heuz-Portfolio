@@ -641,7 +641,8 @@ $(document).ready(function () {
 
 });
 
-
+const contactHeight = ($('.contact').innerHeight() + $('footer').innerHeight())*1.3;
+$('.gradientBG').css('height', contactHeight)
 
 
 

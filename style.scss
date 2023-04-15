@@ -668,11 +668,11 @@ Bg.images-connexion div {
                 flex-direction: column;
                 align-items: flex-end;
                 & input {
-                    background: $black;
+                    background: transparent;
                     border: none;
-                    border-bottom: 1px solid $white;
+                    border-bottom: 1px solid $black;
                     padding:24px 0 ;
-                    color: $white;
+                    color: rgba(0, 0, 0, 0.5);
                     font-family: 'Syne', sans-serif;
                     font-size: min($text, 22px);
                     font-weight: 400;
@@ -684,6 +684,7 @@ Bg.images-connexion div {
                         font-family: 'Syne', sans-serif;
                         font-size: min($text, 22px);
                         font-weight: 400;
+                        color: rgba(0, 0, 0, 0.5);
                     }
                 }
                 & button {
@@ -745,10 +746,16 @@ Bg.images-connexion div {
     }
 
 }
+.contact {
+    color: $black;
+    & h2 {
+        font-weight: 700;
+    }
+}
 textarea {
      background: transparent;
     border: none;
-    border-bottom: 1px solid $white;
+    border-bottom: 1px solid $black;
     padding: 24px 0;
     color: $white;
     font-family: 'Syne', sans-serif;
@@ -760,8 +767,33 @@ textarea {
     &:focus {
         outline: none;
     }
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+    }
 }
-
+.flyButton {
+    background: black;
+    border-radius: 50%;
+    /* padding: 5px; */
+    width: 50px;
+    aspect-ratio: 1;
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transform: rotate(45deg);
+    scale: 1.47;
+    cursor: pointer;
+    & svg {
+        & path {
+            fill: #cb6b6f;
+        }
+        margin-bottom: -8px;
+        transform: translate(0px, 0px) rotate(-45deg);
+    }
+}
 footer {
     display: flex;
     justify-content: space-between;
@@ -1110,6 +1142,9 @@ z-index: -1;
     header {
         height: initial !important;
     }
+    .flyButton {
+        scale: 1;
+    }
     .landing_eyeContain_eyeBox {
         margin-left: 0;
     }
@@ -1356,27 +1391,7 @@ z-index: -1;
             padding: 0px 48px 24px 24px;
         }
     }
-    .flyButton {
-        background: black;
-        border-radius: 50%;
-        /* padding: 5px; */
-        width: 50px;
-        aspect-ratio: 1;
-        margin-top: 56px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        transform: rotate(45deg);
-        & svg {
-            & path {
-                fill: #cb6b6f;
-            }
-            margin-bottom: -8px;
-            transform: translate(0px, 0px) rotate(-45deg);
-        }
-    }
+    
     .contact_bloc_right_link {
         &_mail {
             display: flex;
@@ -1418,6 +1433,11 @@ z-index: -1;
         justify-content: space-between;
         & .cvButton_largeCircle {
             transform: translate(-35px, -45px);
+            & .cvButton {
+                background: transparent;
+                border: none;
+                color: black;
+            }
         }
     }
     .custom-cursor {
@@ -1428,6 +1448,7 @@ z-index: -1;
         padding-top: 24px;
         border-top: 1px solid black;
         font-size: 16px;
+        display: initial !important;
         & h3 {
             font-weight: 700;
             margin-bottom: 16px;

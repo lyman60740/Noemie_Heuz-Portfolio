@@ -638,11 +638,11 @@ Bg.images-connexion div {
   align-items: flex-end;
 }
 .contact_bloc_right form input {
-  background: black;
+  background: transparent;
   border: none;
-  border-bottom: 1px solid #F1EFE3;
+  border-bottom: 1px solid black;
   padding: 24px 0;
-  color: #F1EFE3;
+  color: rgba(0, 0, 0, 0.5);
   font-family: "Syne", sans-serif;
   font-size: min(1.15vw, 22px);
   font-weight: 400;
@@ -655,6 +655,7 @@ Bg.images-connexion div {
   font-family: "Syne", sans-serif;
   font-size: min(1.15vw, 22px);
   font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
 }
 .contact_bloc_right form button {
   color: black;
@@ -706,10 +707,17 @@ Bg.images-connexion div {
   transform: rotate(45deg);
 }
 
+.contact {
+  color: black;
+}
+.contact h2 {
+  font-weight: 700;
+}
+
 textarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid #F1EFE3;
+  border-bottom: 1px solid black;
   padding: 24px 0;
   color: #F1EFE3;
   font-family: "Syne", sans-serif;
@@ -721,6 +729,33 @@ textarea {
 }
 textarea:focus {
   outline: none;
+}
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.flyButton {
+  background: black;
+  border-radius: 50%;
+  /* padding: 5px; */
+  width: 50px;
+  aspect-ratio: 1;
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(45deg);
+  scale: 1.47;
+  cursor: pointer;
+}
+.flyButton svg {
+  margin-bottom: -8px;
+  transform: translate(0px, 0px) rotate(-45deg);
+}
+.flyButton svg path {
+  fill: #cb6b6f;
 }
 
 footer {
@@ -1043,6 +1078,9 @@ footer > .markName {
   header {
     height: initial !important;
   }
+  .flyButton {
+    scale: 1;
+  }
   .landing_eyeContain_eyeBox {
     margin-left: 0;
   }
@@ -1276,27 +1314,6 @@ footer > .markName {
   .contact_bloc {
     padding: 0px 48px 24px 24px;
   }
-  .flyButton {
-    background: black;
-    border-radius: 50%;
-    /* padding: 5px; */
-    width: 50px;
-    aspect-ratio: 1;
-    margin-top: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    transform: rotate(45deg);
-  }
-  .flyButton svg {
-    margin-bottom: -8px;
-    transform: translate(0px, 0px) rotate(-45deg);
-  }
-  .flyButton svg path {
-    fill: #cb6b6f;
-  }
   .contact_bloc_right_link_mail {
     display: flex;
     font-size: 16px;
@@ -1337,6 +1354,11 @@ footer > .markName {
   .contactButtonBox .cvButton_largeCircle {
     transform: translate(-35px, -45px);
   }
+  .contactButtonBox .cvButton_largeCircle .cvButton {
+    background: transparent;
+    border: none;
+    color: black;
+  }
   .custom-cursor {
     display: none;
   }
@@ -1345,6 +1367,7 @@ footer > .markName {
     padding-top: 24px;
     border-top: 1px solid black;
     font-size: 16px;
+    display: initial !important;
   }
   .credit-mobile h3 {
     font-weight: 700;
