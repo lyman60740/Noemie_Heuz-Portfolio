@@ -489,8 +489,6 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
-
-  
   var lastScrollTop = 0;
 
   function isElementEnteringViewport(el) {
@@ -527,7 +525,33 @@ $(document).ready(function() {
       var scrollTop = $(window).scrollTop();
       var scrollDirection = scrollTop > lastScrollTop ? "down" : "up";
       lastScrollTop = scrollTop;
+      var presentationLanding = $('.presentation-landing');
+      var selectionLanding = $('.selection-landing');
+      
+      if(isElementEnteringViewport(presentationLanding[0])){
+        gsap.to(presentationLanding, {
+          duration: 3,
+          x:0, 
+          ease :'power1.out',
+        })
+      } else if(isElementLeavingViewport(presentationLanding[0])){
+        gsap.set(presentationLanding, {
+          x:250, 
+        })
+      }
+      if(isElementEnteringViewport(selectionLanding[0])){
+        gsap.to(selectionLanding, {
+          duration: 3,
+          x:0, 
+          ease :'power1.out',
+        })
+      } else if(isElementLeavingViewport(selectionLanding[0])){
+        gsap.set(selectionLanding, {
+          x:-250, 
 
+        })
+      }
+    
       // Sélectionner tous les éléments avec la classe .your-element-class
       var targetElements = $('.project_description_bloc p');
 
@@ -542,8 +566,9 @@ $(document).ready(function() {
                   opacity: 1,
                   ease: 'power1.out'
               });
+              
           }
-
+          
           if (isElementLeavingViewport(element[0])) {
               // Animation de disparition
               tl.to(element, {
@@ -552,21 +577,69 @@ $(document).ready(function() {
                   opacity: 0,
                   ease: 'power1.in'
               });
+              
           }
           
       });
-  }
+      
+  
+ 
+
+
+}
 
   // Ajouter l'événement de défilement
   $(window).on('scroll', onScroll);
 });
 
+$(document).ready(function () {
+  gsap.registerPlugin(ScrollTrigger);
 
+  var tl = gsap.timeline();
+  setTimeout(() => {
+    tl.from($(".palette div:nth-child(1)"), {
+      y: 0,
+      duration: 1,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "center center",
+      },
+    });
+    tl.from($(".palette div:nth-child(2)"), {
+      y: 0,
+      duration: 1,
+      delay: '+=0.5',
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "center center",
+      },
+    });
+    tl.from($(".palette div:nth-child(3)"), {
+      y: 0,
+      duration: 1,
+      delay: '+=0.5',
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "center center",
+      },
+    });
+    tl.from($(".palette div:nth-child(4)"), {
+      y: 0,
+      duration: 1,
+      delay: '+=0.5',
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "center center",
+      },
+    });
+  }, 100);
+   
 
-
-
-
-
+});
 
 
 

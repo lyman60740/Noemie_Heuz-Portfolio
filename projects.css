@@ -6,8 +6,18 @@ body {
     overflow: visible !important;
 }
 header {
-    animation: none;
     opacity: 1;
+    overflow: hidden;
+    animation: none;
+}
+header img {
+    transform: translateY(60px) ;
+}
+.markName *{
+    transform: translateY(60px);
+}
+nav a{
+    transform: translateY(60px);
 }
 .about h1 {
     width: 99%;
@@ -27,6 +37,19 @@ header {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    animation: aboutAppear 2500ms 700ms forwards cubic-bezier(.215,.61,.355,1);
+    transform: translateY(500px);
+    opacity: 0;
+}
+@keyframes aboutAppear {
+    0% {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
  article {
     margin-bottom: 0 !important;
@@ -186,11 +209,14 @@ h1 {
     overflow: hidden;
     align-self: center;
     cursor: none;
+    transform-origin: top;
+    
 }
 .presentation-landing video {
     width: 1200px;
     height: 800px;
     transform: translate(0px, -95px);
+   
 }
 .selection-landing {
     margin-top: 400px;
@@ -290,7 +316,7 @@ h1 {
     border-radius: 50%;
     background-color: black;
     margin-left: -20px;
-    
+    transform: translateY(100px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,6 +386,25 @@ footer {
     }
     100% {
         transform: translateY(0);
+    }
+}
+.metier {
+    display: flex;
+    overflow: hidden;
+    
+}
+.metier div {
+    transform: translateY(96px);
+}
+.letterAnime {
+    animation: letterAnime 1000ms 500ms forwards cubic-bezier(.215,.61,.355,1);
+}
+@keyframes letterAnime {
+    0% {
+        transform: translateY(60px);
+    }
+    100% {
+        transform: translateY(0px);
     }
 }
 .mockupBox-connexion div:nth-child(1) {

@@ -19,10 +19,13 @@ $(document).ready(function () {
   <article class="about">
             <div class="about-catBox">
             <div class="about-catBox-tiret"></div>
-            <h3 data-cat=${projet.categorie}></h3>
+            <h3 data-cat=${projet.categorie} class="metier"></h3>
             </div>
               
-              <h1 id="about">${projet.titre}</h1>
+            <h1 id="about" class="metier">
+              ${projet.titre.split('').map(letter => letter === ' ' ? '<div>&nbsp;</div>' : `<div>${letter}</div>`).join('')}
+            </h1>
+
               <div class="about_bloc">
                   <section class="about_bloc_content">
                   <div class="mockupBox-${projet.id}">
@@ -92,6 +95,38 @@ $(document).ready(function () {
             
           }
           addCarrousel();
+
+          setTimeout(function () {
+            $(".metier div").each(function (index) {
+              setTimeout(
+                function () {
+                  $(this).addClass("letterAnime");
+                }.bind(this),
+                index * 40
+              );
+            });
+          }, 100);
+
+          setTimeout(function () {
+            $(".markName *").each(function (index) {
+              setTimeout(
+                function () {
+                  $(this).addClass("letterAnime");
+                }.bind(this),
+                index * 300
+              );
+            });
+          }, 400);
+          setTimeout(function () {
+            $("nav a, nav img").each(function (index) {
+              setTimeout(
+                function () {
+                  $(this).addClass("letterAnime");
+                }.bind(this),
+                index * 300
+              );
+            });
+          }, 1300);
 
 if ($.trim($('.carrousel-box').html())) {
   const carrousel = $(".carrousel");
@@ -218,13 +253,43 @@ for (let i = 1; i <= paletteLength; i++) {
 }
 
 
-  var cat = $(".about h3").attr("data-cat");
+ var cat = $(".about h3").attr("data-cat");
 
-  if (cat === "uxui") {
-    $(".about h3").text("UI - UX Design");
-  } else if (cat === "illustration") {
-    $(".about h3").text("Illustration");
-  }
+if (cat === "uxui") {
+  $(".about h3").html("".concat(
+    '<div>U</div>',
+    '<div>I</div>',
+    '<div>&nbsp;</div>',
+    '<div>-</div>',
+    '<div>&nbsp;</div>',
+    '<div>U</div>',
+    '<div>X</div>',
+    '<div>&nbsp;</div>',
+    '<div>D</div>',
+    '<div>e</div>',
+    '<div>s</div>',
+    '<div>i</div>',
+    '<div>g</div>',
+    '<div>n</div>',
+    '<div>e</div>',
+    '<div>r</div>'
+  ));
+} else if (cat === "illustration") {
+  $(".about h3").html("".concat(
+    '<div>I</div>',
+    '<div>l</div>',
+    '<div>l</div>',
+    '<div>u</div>',
+    '<div>s</div>',
+    '<div>t</div>',
+    '<div>r</div>',
+    '<div>a</div>',
+    '<div>t</div>',
+    '<div>i</div>',
+    '<div>o</div>',
+    '<div>n</div>'
+  ));
+}
 
   $('.mockupBox-paiement').prepend(`
   <div class="kagebunshin-no-jutsu"></div>
